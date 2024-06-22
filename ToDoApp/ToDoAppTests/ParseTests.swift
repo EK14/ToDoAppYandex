@@ -132,7 +132,7 @@ class ParseTests: XCTestCase {
     }
     
     func testParseRealJSON() {
-        let fileUrl = URL(fileURLWithPath: "/Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoAppTests/test_1.json")
+        guard let fileUrl = Bundle.main.path(forResource: "test_1", ofType: "json") else { return }
         let item = ToDoItem.parse(json: fileUrl)
         XCTAssertNotNil(item)
     }

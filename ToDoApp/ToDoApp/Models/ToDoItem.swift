@@ -105,3 +105,32 @@ extension ToDoItem {
     }
 }
 
+extension ToDoItem {
+    static func parseCSV(csvName: String) -> [ToDoItem]? {
+        var toDoItems = [ToDoItem]()
+        
+        guard let filePath = Bundle.main.path(forResource: csvName, ofType: "csv") else { return nil }
+        
+        var data = ""
+        do {
+            data = try String(contentsOfFile: filePath)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+        var rows = data.components(separatedBy: "\n")
+        
+        rows.removeFirst()
+        
+        for row in rows {
+            let csvColumn = row.components(separatedBy: ",")
+            let item = ToDoItem.init(text: csvColumn[0],
+                                     importance: ItemImportance(rawValue: csvColumn[1]) ?? .basic,
+                                     done: Bool(csvColumn[2]) ?? false,
+                                     createdAt: Date(timeIntervalSince1970: TimeInterval(Int(csvColumn[3]) ?? 0)))
+            toDoItems.append(item)
+        }
+        return toDoItems
+    }
+}
