@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
 		C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */; };
 		C3C572DA2C1DC0D100314F5E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* ContentView.swift */; };
 		C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DB2C1DC0D300314F5E /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C3C572D42C1DC0D100314F5E /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
 		C3C572D92C1DC0D100314F5E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,9 +123,10 @@
 		C3F06BC92C25AF96000BB3F7 /* ToDoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */,
 				C3DB71402C262CE700DFAFF9 /* test_1.json */,
+				C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */,
 				C3DB71442C262F3D00DFAFF9 /* JsonTests.swift */,
+				C38D29E72C263FE6009C60BF /* FileCacheTests.swift */,
 			);
 			path = ToDoAppTests;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			files = (
 				C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */,
 				C3DB71452C262F3D00DFAFF9 /* JsonTests.swift in Sources */,
+				C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

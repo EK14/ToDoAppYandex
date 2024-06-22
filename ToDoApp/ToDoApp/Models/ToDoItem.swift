@@ -51,6 +51,8 @@ extension ToDoItem {
         if let deadline = deadline {
             jsonDict["deadline"] = deadline
         }
+        
+        jsonDict["created_at"] = createdAt.timeIntervalSince1970
 
         jsonDict["done"] = done
         
