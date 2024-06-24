@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CreateItemView.swift
 //  ToDoApp
 //
 //  Created by Elina Karapetian on 15.06.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CreateItemView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CreateItemView()
 }

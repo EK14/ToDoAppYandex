@@ -71,7 +71,8 @@ extension ToDoItem {
                 print(error.localizedDescription)
             }
         } else if let json = json as? [String: Any] {
-            guard let data = try? JSONSerialization.data(withJSONObject: json, options: []) else {
+            print(Date(timeIntervalSince1970: 6.7))
+            guard let data = try? JSONSerialization.data(withJSONObject: json) else {
                 return nil
             }
             return ToDoItem.createItem(data: data)

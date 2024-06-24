@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
+		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
 		C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */; };
-		C3C572DA2C1DC0D100314F5E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* ContentView.swift */; };
+		C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* CreateItemView.swift */; };
 		C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DB2C1DC0D300314F5E /* Assets.xcassets */; };
 		C3C572DF2C1DC0D300314F5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DE2C1DC0D300314F5E /* Preview Assets.xcassets */; };
 		C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572E62C1DC13500314F5E /* ItemImportance.swift */; };
@@ -32,9 +33,10 @@
 
 /* Begin PBXFileReference section */
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
+		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C3C572D42C1DC0D100314F5E /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
-		C3C572D92C1DC0D100314F5E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3C572D92C1DC0D100314F5E /* CreateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemView.swift; sourceTree = "<group>"; };
 		C3C572DB2C1DC0D300314F5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3C572DE2C1DC0D300314F5E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3C572E62C1DC13500314F5E /* ItemImportance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImportance.swift; sourceTree = "<group>"; };
@@ -64,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C38D29E92C2705F1009C60BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3C572D92C1DC0D100314F5E /* CreateItemView.swift */,
+				C38D29EA2C270648009C60BF /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C3C572CB2C1DC0D100314F5E = {
 			isa = PBXGroup;
 			children = (
@@ -85,13 +96,13 @@
 		C3C572D62C1DC0D100314F5E /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C38D29E92C2705F1009C60BF /* Views */,
 				C3C572EA2C1DC25F00314F5E /* Models */,
 				C3C572E52C1DC11900314F5E /* Enums */,
 				C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */,
-				C3C572D92C1DC0D100314F5E /* ContentView.swift */,
 				C3C572DB2C1DC0D300314F5E /* Assets.xcassets */,
-				C3C572DD2C1DC0D300314F5E /* Preview Content */,
 				C3C572FE2C1F13A600314F5E /* FileCache.swift */,
+				C3C572DD2C1DC0D300314F5E /* Preview Content */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -233,7 +244,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
-				C3C572DA2C1DC0D100314F5E /* ContentView.swift in Sources */,
+				C38D29EB2C270648009C60BF /* MainView.swift in Sources */,
+				C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,
 				C3C572FF2C1F13A600314F5E /* FileCache.swift in Sources */,
 				C3C572E92C1DC25700314F5E /* ToDoItem.swift in Sources */,
