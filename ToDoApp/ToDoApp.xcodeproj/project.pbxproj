@@ -20,6 +20,11 @@
 		C3DB71412C262CE700DFAFF9 /* test_1.json in Resources */ = {isa = PBXBuildFile; fileRef = C3DB71402C262CE700DFAFF9 /* test_1.json */; };
 		C3DB71452C262F3D00DFAFF9 /* JsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB71442C262F3D00DFAFF9 /* JsonTests.swift */; };
 		C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300112C2B45B3009C76E6 /* CustomTextView.swift */; };
+		C3E300162C2B6731009C76E6 /* Localizable-ru.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3E300152C2B6731009C76E6 /* Localizable-ru.strings */; };
+		C3E300192C2B67D5009C76E6 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300182C2B67D5009C76E6 /* Strings.swift */; };
+		C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3001C2C2B6E11009C76E6 /* Colors.swift */; };
+		C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3001E2C2B711B009C76E6 /* Constants.swift */; };
+		C3E300202C2B711B009C76E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E3001E2C2B711B009C76E6 /* Constants.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +53,10 @@
 		C3DB71402C262CE700DFAFF9 /* test_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_1.json; sourceTree = "<group>"; };
 		C3DB71442C262F3D00DFAFF9 /* JsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTests.swift; sourceTree = "<group>"; };
 		C3E300112C2B45B3009C76E6 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		C3E300152C2B6731009C76E6 /* Localizable-ru.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "Localizable-ru.strings"; sourceTree = "<group>"; };
+		C3E300182C2B67D5009C76E6 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		C3E3001C2C2B6E11009C76E6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C3E3001E2C2B711B009C76E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,13 +125,14 @@
 		C3C572D62C1DC0D100314F5E /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C3E300172C2B67C6009C76E6 /* Generated */,
+				C3E300142C2B66BC009C76E6 /* Resources */,
 				C396B3CA2C2A0FBB00A695E6 /* Helpers */,
 				C396B3C72C2A083900A695E6 /* ViewModels */,
 				C38D29E92C2705F1009C60BF /* Views */,
 				C3C572EA2C1DC25F00314F5E /* Models */,
 				C3C572E52C1DC11900314F5E /* Enums */,
 				C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */,
-				C3C572DB2C1DC0D300314F5E /* Assets.xcassets */,
 				C3C572FE2C1F13A600314F5E /* FileCache.swift */,
 				C3C572DD2C1DC0D300314F5E /* Preview Content */,
 			);
@@ -153,6 +163,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C3E300142C2B66BC009C76E6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C3E300152C2B6731009C76E6 /* Localizable-ru.strings */,
+				C3C572DB2C1DC0D300314F5E /* Assets.xcassets */,
+				C3E3001E2C2B711B009C76E6 /* Constants.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C3E300172C2B67C6009C76E6 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				C3E300182C2B67D5009C76E6 /* Strings.swift */,
+				C3E3001C2C2B6E11009C76E6 /* Colors.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		C3F06BC92C25AF96000BB3F7 /* ToDoAppTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +203,7 @@
 				C3C572D02C1DC0D100314F5E /* Sources */,
 				C3C572D12C1DC0D100314F5E /* Frameworks */,
 				C3C572D22C1DC0D100314F5E /* Resources */,
+				C3E300132C2B6593009C76E6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C572DF2C1DC0D300314F5E /* Preview Assets.xcassets in Resources */,
+				C3E300162C2B6731009C76E6 /* Localizable-ru.strings in Resources */,
 				C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,12 +291,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C3E300132C2B6593009C76E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/swiftgen config run\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3C572D02C1DC0D100314F5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
+				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,
+				C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */,
+				C3E300192C2B67D5009C76E6 /* Strings.swift in Sources */,
 				C38D29EB2C270648009C60BF /* MainView.swift in Sources */,
 				C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */,
 				C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */,
@@ -283,6 +337,7 @@
 				C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */,
 				C3DB71452C262F3D00DFAFF9 /* JsonTests.swift in Sources */,
 				C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */,
+				C3E300202C2B711B009C76E6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +389,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -397,7 +452,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -426,6 +481,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = QQXC2V882Q;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,6 +511,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = QQXC2V882Q;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

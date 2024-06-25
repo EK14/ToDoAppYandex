@@ -450,6 +450,38 @@
             endingLineNumber = "45"
             landmarkName = "upload()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "788BC279-C0A4-49EB-9197-677C23F94EAF - 71d839c02c052b48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.FileCache.save() -&gt; ()"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/FileCache.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "2056">
+               </Location>
+               <Location
+                  uuid = "788BC279-C0A4-49EB-9197-677C23F94EAF - c5d6c9756d0015b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.FileCache.upload() -&gt; ()"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/FileCache.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "268">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -529,6 +561,38 @@
             endingLineNumber = "60"
             landmarkName = "parse(json:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ToDoApp.ToDoItem.parse(json: Any) -&gt; Swift.Optional&lt;ToDoApp.ToDoItem&gt;"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Models/ToDoItem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ToDoApp.ToDoItem.parse(json: Any) -&gt; Swift.Optional&lt;ToDoApp.ToDoItem&gt;"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Models/ToDoItem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "520">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -7,7 +7,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            Color("BackPrimary")
+            Color(C.backPrimary.swiftUIColor)
                 .ignoresSafeArea()
             
             VStack {
@@ -21,7 +21,7 @@ struct MainView: View {
                         .padding(10)
                         .foregroundColor(.white)
                         .frame(width: 44, height: 44)
-                        .background(Color("Blue"))
+                        .background(C.blue.swiftUIColor)
                         .clipShape(Circle())
                         .shadow(radius: 20)
                 }

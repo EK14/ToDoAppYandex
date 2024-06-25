@@ -8,20 +8,20 @@ struct CreateItemView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("BackPrimary")
+                Color(C.backPrimary.color)
                     .ignoresSafeArea()
                 ScrollView {
                     VStack {
                         ZStack(alignment: .topLeading) {
-                            CustomTextView(text: $text, height: $height, placeholder: "Что надо сделать?")
+                            CustomTextView(text: $text, height: $height, placeholder: T.whatNeedToDo)
                                 .cornerRadius(16)
                             
                             if text.isEmpty {
-                                Text("Что надо сделать?")
+                                Text(T.whatNeedToDo)
                                     .frame(alignment: .leading)
                                     .padding(.leading, 20)
                                     .padding(.top, 17)
-                                    .foregroundStyle(Color("LabelTertiary"))
+                                    .foregroundColor(C.labelTertiary.swiftUIColor)
                             }
                         }
                         .frame(height: height)
@@ -30,21 +30,21 @@ struct CreateItemView: View {
                     }
                 }
             }
-            .navigationTitle("Дело")
+            .navigationTitle(T.item)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
                         
                     } label: {
-                        Text("Сохранить")
+                        Text(T.save)
                     }
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button{
                         
                     } label: {
-                        Text("Отменить")
+                        Text(T.cancel)
                     }
                     .disabled(true)
                 }
