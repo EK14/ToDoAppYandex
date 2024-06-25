@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
 		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
+		C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396B3C82C2A085400A695E6 /* MainViewViewModel.swift */; };
 		C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */; };
 		C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* CreateItemView.swift */; };
 		C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DB2C1DC0D300314F5E /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		C3C572FF2C1F13A600314F5E /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572FE2C1F13A600314F5E /* FileCache.swift */; };
 		C3DB71412C262CE700DFAFF9 /* test_1.json in Resources */ = {isa = PBXBuildFile; fileRef = C3DB71402C262CE700DFAFF9 /* test_1.json */; };
 		C3DB71452C262F3D00DFAFF9 /* JsonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB71442C262F3D00DFAFF9 /* JsonTests.swift */; };
+		C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300112C2B45B3009C76E6 /* CustomTextView.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,7 @@
 /* Begin PBXFileReference section */
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C396B3C82C2A085400A695E6 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		C3C572D42C1DC0D100314F5E /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
 		C3C572D92C1DC0D100314F5E /* CreateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemView.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		C3C572FE2C1F13A600314F5E /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		C3DB71402C262CE700DFAFF9 /* test_1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_1.json; sourceTree = "<group>"; };
 		C3DB71442C262F3D00DFAFF9 /* JsonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTests.swift; sourceTree = "<group>"; };
+		C3E300112C2B45B3009C76E6 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +79,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C396B3C72C2A083900A695E6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C396B3C82C2A085400A695E6 /* MainViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C396B3CA2C2A0FBB00A695E6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3E300112C2B45B3009C76E6 /* CustomTextView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C3C572CB2C1DC0D100314F5E = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +116,8 @@
 		C3C572D62C1DC0D100314F5E /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C396B3CA2C2A0FBB00A695E6 /* Helpers */,
+				C396B3C72C2A083900A695E6 /* ViewModels */,
 				C38D29E92C2705F1009C60BF /* Views */,
 				C3C572EA2C1DC25F00314F5E /* Models */,
 				C3C572E52C1DC11900314F5E /* Enums */,
@@ -245,6 +267,8 @@
 			files = (
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
 				C38D29EB2C270648009C60BF /* MainView.swift in Sources */,
+				C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */,
+				C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */,
 				C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,
 				C3C572FF2C1F13A600314F5E /* FileCache.swift in Sources */,

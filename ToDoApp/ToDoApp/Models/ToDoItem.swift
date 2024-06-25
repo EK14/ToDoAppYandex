@@ -1,9 +1,4 @@
-//
-//  ToDoItem.swift
-//  ToDoApp
-//
 //  Created by Elina Karapetian on 15.06.2024.
-//
 
 import Foundation
 
