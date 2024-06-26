@@ -16,7 +16,7 @@ struct MainView: View {
                 Button {
                     createItem.toggle()
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: T.plus)
                         .resizable()
                         .padding(10)
                         .foregroundColor(.white)

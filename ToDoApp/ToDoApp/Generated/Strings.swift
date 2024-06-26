@@ -10,10 +10,24 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum T {
+  /// arrow.down
+  internal static let arrowDown = T.tr("Localizable-ru", "arrowDown", fallback: "arrow.down")
   /// Отменить
   internal static let cancel = T.tr("Localizable-ru", "Cancel", fallback: "Отменить")
+  /// Удалить
+  internal static let delete = T.tr("Localizable-ru", "Delete", fallback: "Удалить")
+  /// Сделать до
+  internal static let doBefore = T.tr("Localizable-ru", "DoBefore", fallback: "Сделать до")
+  /// exclamationmark.2
+  internal static let exclamationMark = T.tr("Localizable-ru", "exclamationMark", fallback: "exclamationmark.2")
+  /// Важность
+  internal static let importance = T.tr("Localizable-ru", "Importance", fallback: "Важность")
   /// Дело
   internal static let item = T.tr("Localizable-ru", "Item", fallback: "Дело")
+  /// Нет
+  internal static let no = T.tr("Localizable-ru", "No", fallback: "Нет")
+  /// plus
+  internal static let plus = T.tr("Localizable-ru", "plus", fallback: "plus")
   /// Сохранить
   internal static let save = T.tr("Localizable-ru", "Save", fallback: "Сохранить")
   /// Что надо сделать?

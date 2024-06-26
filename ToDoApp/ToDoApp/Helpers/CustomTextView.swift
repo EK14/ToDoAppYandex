@@ -3,20 +3,19 @@
 import SwiftUI
 
 struct CustomTextView: UIViewRepresentable {
-//    @EnvironmentObject var parametersViewModel: TagParametersViewModel
     @Binding var text: String
     @Binding var height: CGFloat
     var placeholder: String
 
     func makeUIView(context: Context) -> some UITextView {
         let textView = UITextView()
-        textView.textColor = UIColor.black
+        textView.textColor = C.labelPrimary.color
         textView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         textView.isScrollEnabled = true
         textView.isSelectable = true
         textView.isUserInteractionEnabled = true
         textView.delegate = context.coordinator
-        textView.textContainerInset = UIEdgeInsets(top: 17, left: 20, bottom: 17, right: 20)
+        textView.textContainerInset = Constants.textViewTextContainerInset
         textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textView.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -47,16 +46,14 @@ class TextViewCoordinator: NSObject, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         $text.wrappedValue = textView.text == placeholder ? "" : textView.text
 
-        let size = CGSize(width: UIScreen.main.bounds.width - UIScreen.main.bounds.size.height * 0.02 * 2, height: .infinity)
+        let size = CGSize(width: Constants.textViewTextWidth, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
-
-//        guard textView.contentSize.height < 80.0 else { textView.isScrollEnabled = true; return }
 
         textView.isScrollEnabled = false
         for constraints in textView.constraints {
             if constraints.firstAttribute == .height {
                 constraints.constant = estimatedSize.height
-                height = max(estimatedSize.height, 120)
+                height = max(estimatedSize.height, Constants.textViewDefaultHeight)
             }
         }
     }
