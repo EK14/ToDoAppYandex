@@ -29,7 +29,7 @@ struct MainView: View {
             }
             .padding(.bottom, 20)
             .sheet(isPresented: $createItem, content: {
-                CreateItemView(viewModel: viewModel)
+                CreateEditItemView(viewModel: viewModel, actionType: .create)
             })
         }
     }

@@ -22,8 +22,7 @@ struct ImportanceSegmentView: View {
                 Text(T.no)
                     .tag(ItemImportance.basic)
                 Image(systemName: T.exclamationMark)
-                    .foregroundStyle(.red)
-                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.red, .white)
                     .tag(ItemImportance.important)
             }
             .pickerStyle(.segmented)

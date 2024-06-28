@@ -2,10 +2,11 @@
 
 import SwiftUI
 
-struct CreateItemView: View {
-    @ObservedObject var viewModel: CreateItemViewViewModel
+struct CreateEditItemView: View {
+    @StateObject var viewModel: CreateItemViewViewModel
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
+    var actionType: ItemActionType
     
     var body: some View {
         NavigationStack {
@@ -113,7 +114,8 @@ struct CreateItemView: View {
         .background(C.backSecondary.swiftUIColor)
         .cornerRadius(16)
         .padding(.horizontal, 16)
-        .foregroundColor(C.red.swiftUIColor)
+        .foregroundColor(actionType == .create ? C.labelTertiary.swiftUIColor: C.red.swiftUIColor)
+        .disabled(actionType == .create)
     }
 }
 
@@ -132,6 +134,7 @@ struct NavigationToolBar: ViewModifier {
                     } label: {
                         Text(T.save)
                     }
+                    .disabled(viewModel.text.isEmpty)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button{

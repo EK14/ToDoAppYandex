@@ -11,7 +11,7 @@
 		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
 		C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396B3C82C2A085400A695E6 /* MainViewViewModel.swift */; };
 		C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */; };
-		C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* CreateItemView.swift */; };
+		C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* CreateEditItemView.swift */; };
 		C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DB2C1DC0D300314F5E /* Assets.xcassets */; };
 		C3C572DF2C1DC0D300314F5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DE2C1DC0D300314F5E /* Preview Assets.xcassets */; };
 		C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572E62C1DC13500314F5E /* ItemImportance.swift */; };
@@ -39,6 +39,7 @@
 		C3EBBC612C2F3D0700C09F51 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */; };
 		C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */; };
 		C3EBBC652C2F422E00C09F51 /* DeadlineSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */; };
+		C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +59,7 @@
 		C396B3C82C2A085400A695E6 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		C3C572D42C1DC0D100314F5E /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
-		C3C572D92C1DC0D100314F5E /* CreateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemView.swift; sourceTree = "<group>"; };
+		C3C572D92C1DC0D100314F5E /* CreateEditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditItemView.swift; sourceTree = "<group>"; };
 		C3C572DB2C1DC0D300314F5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3C572DE2C1DC0D300314F5E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3C572E62C1DC13500314F5E /* ItemImportance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImportance.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceSegmentView.swift; sourceTree = "<group>"; };
 		C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSegmentView.swift; sourceTree = "<group>"; };
+		C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemActionType.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				C3C572E62C1DC13500314F5E /* ItemImportance.swift */,
+				C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -213,7 +216,7 @@
 		C3EBBC5D2C2F3BA300C09F51 /* CreateItemView */ = {
 			isa = PBXGroup;
 			children = (
-				C3C572D92C1DC0D100314F5E /* CreateItemView.swift */,
+				C3C572D92C1DC0D100314F5E /* CreateEditItemView.swift */,
 				C3EBBC5E2C2F3BC700C09F51 /* TextView.swift */,
 				C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */,
 				C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */,
@@ -371,7 +374,8 @@
 				C3E300452C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */,
 				C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */,
 				C3EBBC5F2C2F3BC700C09F51 /* TextView.swift in Sources */,
-				C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */,
+				C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */,
+				C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,
 				C3E300252C2B82E9009C76E6 /* View+Extension.swift in Sources */,
 				C3C572FF2C1F13A600314F5E /* FileCache.swift in Sources */,
