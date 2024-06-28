@@ -40,6 +40,9 @@
 		C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */; };
 		C3EBBC652C2F422E00C09F51 /* DeadlineSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */; };
 		C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */; };
+		C3EBBC692C2F507D00C09F51 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC682C2F507D00C09F51 /* DeleteButton.swift */; };
+		C3EBBC6B2C2F513700C09F51 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC6A2C2F513700C09F51 /* DatePickerView.swift */; };
+		C3EBBC6D2C2F51EE00C09F51 /* NavigationToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,9 @@
 		C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceSegmentView.swift; sourceTree = "<group>"; };
 		C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSegmentView.swift; sourceTree = "<group>"; };
 		C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemActionType.swift; sourceTree = "<group>"; };
+		C3EBBC682C2F507D00C09F51 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
+		C3EBBC6A2C2F513700C09F51 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationToolBarModifier.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +227,9 @@
 				C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */,
 				C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */,
 				C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */,
+				C3EBBC682C2F507D00C09F51 /* DeleteButton.swift */,
+				C3EBBC6A2C2F513700C09F51 /* DatePickerView.swift */,
+				C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */,
 			);
 			path = CreateItemView;
 			sourceTree = "<group>";
@@ -360,8 +369,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3EBBC652C2F422E00C09F51 /* DeadlineSegmentView.swift in Sources */,
+				C3EBBC6B2C2F513700C09F51 /* DatePickerView.swift in Sources */,
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
 				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,
+				C3EBBC6D2C2F51EE00C09F51 /* NavigationToolBarModifier.swift in Sources */,
 				C3E300222C2B723F009C76E6 /* CreateItemViewViewModel.swift in Sources */,
 				C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */,
 				C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */,
@@ -373,6 +384,7 @@
 				C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */,
 				C3E300452C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */,
 				C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */,
+				C3EBBC692C2F507D00C09F51 /* DeleteButton.swift in Sources */,
 				C3EBBC5F2C2F3BC700C09F51 /* TextView.swift in Sources */,
 				C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */,
 				C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */,

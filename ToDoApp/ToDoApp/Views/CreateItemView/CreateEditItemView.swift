@@ -7,143 +7,81 @@ struct CreateEditItemView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
     var actionType: ItemActionType
-    
+
     var body: some View {
         NavigationStack {
             if verticalSizeClass == .regular {
                 ZStack {
                     Color(C.backPrimary.color)
                         .ignoresSafeArea()
-                    
+
                     ScrollView {
-                        VStack(spacing: 16) {
+                        VStack(spacing: Constants.verticalStackSpacing) {
                             TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
-                            
-                            VStack(spacing: .zero) {
-                                ImportanceSegmentView(importance: $viewModel.importance)
-                                
-                                Divider()
-                                    .padding(.horizontal, 32)
-                                
-                                DeadlineSegmentView(isOn: $viewModel.isOn, datePickerIsHidden: $viewModel.datePickerIsHidden, date: $viewModel.date)
-                                
-                                if !viewModel.datePickerIsHidden {
-                                    Divider()
-                                        .padding(.horizontal, 32)
-                                    
-                                    datePicker
-                                }
-                                
-                                Divider()
-                                    .padding(.horizontal, 32)
-                                
-                                ColorPickerView(color: $viewModel.color)
-                            }
-                            
-                            deleteButton
+
+                            SettingsView(importance: $viewModel.importance,
+                                         isOn: $viewModel.isOn,
+                                         datePickerIsHidden: $viewModel.datePickerIsHidden,
+                                         date: $viewModel.date,
+                                         color: $viewModel.color)
+
+                            DeleteButton(actionType: actionType)
                         }
                     }
                 }
-                .modifier(NavigationToolBar(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel))
             } else {
                 ZStack {
                     Color(C.backPrimary.color)
                         .ignoresSafeArea()
                     ScrollView {
-                        VStack {
+                        VStack(spacing: Constants.verticalStackSpacing) {
                             HStack(alignment: .top) {
                                 TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
-                                
-                                VStack(spacing: .zero) {
-                                    ImportanceSegmentView(importance: $viewModel.importance)
-                                    
-                                    Divider()
-                                        .padding(.horizontal, 32)
-                                    
-                                    DeadlineSegmentView(isOn: $viewModel.isOn, datePickerIsHidden: $viewModel.datePickerIsHidden, date: $viewModel.date)
-                                    
-                                    if !viewModel.datePickerIsHidden {
-                                        Divider()
-                                            .padding(.horizontal, 32)
-                                        
-                                        datePicker
-                                    }
-                                    
-                                    Divider()
-                                        .padding(.horizontal, 32)
-                                    
-                                    ColorPickerView(color: $viewModel.color)
-                                }
+
+                                SettingsView(importance: $viewModel.importance,
+                                             isOn: $viewModel.isOn,
+                                             datePickerIsHidden: $viewModel.datePickerIsHidden,
+                                             date: $viewModel.date,
+                                             color: $viewModel.color)
                                 .padding(.top, 16)
                             }
                         }
                     }
                 }
-                .modifier(NavigationToolBar(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel))
             }
         }
-    }
-    
-    var datePicker: some View {
-        DatePicker(
-            "",
-            selection: $viewModel.date,
-            in: Date.now.addingTimeInterval(86400)..., 
-            displayedComponents: [.date]
-        )
-        .datePickerStyle(.graphical)
-        .background(C.backSecondary.swiftUIColor)
-        .padding(.horizontal, 16)
-        .environment(\.locale, Locale.init(identifier: "ru"))
-        .onChange(of: viewModel.date) {
-            withAnimation {
-                viewModel.datePickerIsHidden = true
-            }
-        }
-    }
-    
-    var deleteButton: some View {
-        Button {
-            
-        } label: {
-            Text(T.delete)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 16)
-        .background(C.backSecondary.swiftUIColor)
-        .cornerRadius(16)
-        .padding(.horizontal, 16)
-        .foregroundColor(actionType == .create ? C.labelTertiary.swiftUIColor: C.red.swiftUIColor)
-        .disabled(actionType == .create)
     }
 }
 
-struct NavigationToolBar: ViewModifier {
-    @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var viewModel: CreateItemViewViewModel
-    
-    func body(content: Content) -> some View {
-        content
-            .navigationTitle(T.item)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button{
-                        
-                    } label: {
-                        Text(T.save)
-                    }
-                    .disabled(viewModel.text.isEmpty)
-                }
-                ToolbarItem(placement: .topBarLeading) {
-                    Button{
-                        presentationMode.wrappedValue.dismiss()
-                        viewModel.delete()
-                    } label: {
-                        Text(T.cancel)
-                    }
-                }
+struct SettingsView: View {
+    @Binding var importance: ItemImportance
+    @Binding var isOn: Bool
+    @Binding var datePickerIsHidden: Bool
+    @Binding var date: Date
+    @Binding var color: Color
+
+    var body: some View {
+        VStack(spacing: .zero) {
+            ImportanceSegmentView(importance: $importance)
+
+            Divider()
+                .padding(.horizontal, Constants.dividerHorizontalPadding)
+
+            DeadlineSegmentView(isOn: $isOn, datePickerIsHidden: $datePickerIsHidden, date: $date)
+
+            if !datePickerIsHidden {
+                Divider()
+                    .padding(.horizontal, Constants.dividerHorizontalPadding)
+
+                DatePickerView(date: $date, datePickerIsHidden: $datePickerIsHidden)
             }
+
+            Divider()
+                .padding(.horizontal, Constants.dividerHorizontalPadding)
+
+            ColorPickerView(color: $color)
+        }
     }
 }
