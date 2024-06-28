@@ -14,6 +14,8 @@ internal enum T {
   internal static let arrowDown = T.tr("Localizable-ru", "arrowDown", fallback: "arrow.down")
   /// Отменить
   internal static let cancel = T.tr("Localizable-ru", "Cancel", fallback: "Отменить")
+  /// Цвет
+  internal static let color = T.tr("Localizable-ru", "Color", fallback: "Цвет")
   /// Удалить
   internal static let delete = T.tr("Localizable-ru", "Delete", fallback: "Удалить")
   /// Сделать до

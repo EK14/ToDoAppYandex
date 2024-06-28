@@ -31,6 +31,14 @@
 		C3E300262C2B82E9009C76E6 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300242C2B82E9009C76E6 /* View+Extension.swift */; };
 		C3E3002A2C2C1A6B009C76E6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300292C2C1A6B009C76E6 /* DateFormatterManager.swift */; };
 		C3E3002B2C2C1A6B009C76E6 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300292C2C1A6B009C76E6 /* DateFormatterManager.swift */; };
+		C3E300422C2D11BE009C76E6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300412C2D11BE009C76E6 /* Color+Hex.swift */; };
+		C3E300432C2D11BE009C76E6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300412C2D11BE009C76E6 /* Color+Hex.swift */; };
+		C3E300452C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300442C2D11DA009C76E6 /* UIColor+Hex.swift */; };
+		C3E300462C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E300442C2D11DA009C76E6 /* UIColor+Hex.swift */; };
+		C3EBBC5F2C2F3BC700C09F51 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC5E2C2F3BC700C09F51 /* TextView.swift */; };
+		C3EBBC612C2F3D0700C09F51 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */; };
+		C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */; };
+		C3EBBC652C2F422E00C09F51 /* DeadlineSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +74,12 @@
 		C3E300212C2B723F009C76E6 /* CreateItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemViewViewModel.swift; sourceTree = "<group>"; };
 		C3E300242C2B82E9009C76E6 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C3E300292C2C1A6B009C76E6 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		C3E300412C2D11BE009C76E6 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		C3E300442C2D11DA009C76E6 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		C3EBBC5E2C2F3BC700C09F51 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceSegmentView.swift; sourceTree = "<group>"; };
+		C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSegmentView.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +105,7 @@
 		C38D29E92C2705F1009C60BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C3C572D92C1DC0D100314F5E /* CreateItemView.swift */,
+				C3EBBC5D2C2F3BA300C09F51 /* CreateItemView */,
 				C38D29EA2C270648009C60BF /* MainView.swift */,
 			);
 			path = Views;
@@ -112,6 +126,8 @@
 				C3E300112C2B45B3009C76E6 /* CustomTextView.swift */,
 				C3E300242C2B82E9009C76E6 /* View+Extension.swift */,
 				C3E300292C2C1A6B009C76E6 /* DateFormatterManager.swift */,
+				C3E300412C2D11BE009C76E6 /* Color+Hex.swift */,
+				C3E300442C2D11DA009C76E6 /* UIColor+Hex.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -192,6 +208,18 @@
 				C3E3001C2C2B6E11009C76E6 /* Colors.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		C3EBBC5D2C2F3BA300C09F51 /* CreateItemView */ = {
+			isa = PBXGroup;
+			children = (
+				C3C572D92C1DC0D100314F5E /* CreateItemView.swift */,
+				C3EBBC5E2C2F3BC700C09F51 /* TextView.swift */,
+				C3EBBC602C2F3D0700C09F51 /* ColorPickerView.swift */,
+				C3EBBC622C2F3FAB00C09F51 /* ImportanceSegmentView.swift */,
+				C3EBBC642C2F422E00C09F51 /* DeadlineSegmentView.swift */,
+			);
+			path = CreateItemView;
 			sourceTree = "<group>";
 		};
 		C3F06BC92C25AF96000BB3F7 /* ToDoAppTests */ = {
@@ -328,15 +356,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3EBBC652C2F422E00C09F51 /* DeadlineSegmentView.swift in Sources */,
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
 				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,
 				C3E300222C2B723F009C76E6 /* CreateItemViewViewModel.swift in Sources */,
+				C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */,
 				C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */,
 				C3E300192C2B67D5009C76E6 /* Strings.swift in Sources */,
+				C3EBBC612C2F3D0700C09F51 /* ColorPickerView.swift in Sources */,
+				C3E300422C2D11BE009C76E6 /* Color+Hex.swift in Sources */,
 				C38D29EB2C270648009C60BF /* MainView.swift in Sources */,
 				C3E3002A2C2C1A6B009C76E6 /* DateFormatterManager.swift in Sources */,
 				C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */,
+				C3E300452C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */,
 				C396B3C92C2A085400A695E6 /* MainViewViewModel.swift in Sources */,
+				C3EBBC5F2C2F3BC700C09F51 /* TextView.swift in Sources */,
 				C3C572DA2C1DC0D100314F5E /* CreateItemView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,
 				C3E300252C2B82E9009C76E6 /* View+Extension.swift in Sources */,
@@ -350,7 +384,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E300232C2B723F009C76E6 /* CreateItemViewViewModel.swift in Sources */,
+				C3E300432C2D11BE009C76E6 /* Color+Hex.swift in Sources */,
 				C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */,
+				C3E300462C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */,
 				C3DB71452C262F3D00DFAFF9 /* JsonTests.swift in Sources */,
 				C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */,
 				C3E300262C2B82E9009C76E6 /* View+Extension.swift in Sources */,

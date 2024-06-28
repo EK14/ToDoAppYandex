@@ -4,6 +4,7 @@ import SwiftUI
 
 struct MainView: View {
     @State var createItem = false
+    @ObservedObject var viewModel = CreateItemViewViewModel()
     
     var body: some View {
         ZStack {
@@ -28,7 +29,7 @@ struct MainView: View {
             }
             .padding(.bottom, 20)
             .sheet(isPresented: $createItem, content: {
-                CreateItemView()
+                CreateItemView(viewModel: viewModel)
             })
         }
     }
