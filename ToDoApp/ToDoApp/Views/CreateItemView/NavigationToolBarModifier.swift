@@ -18,7 +18,7 @@ struct NavigationToolBarModifier: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        
+                        viewModel.save()
                     } label: {
                         Text(T.save)
                     }

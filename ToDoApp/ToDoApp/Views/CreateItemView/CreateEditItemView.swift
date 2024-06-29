@@ -44,6 +44,8 @@ struct CreateEditItemView: View {
                                              color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
                                 .padding(.top, 16)
                             }
+                            
+                            DeleteButton(actionType: actionType)
                         }
                     }
                 }

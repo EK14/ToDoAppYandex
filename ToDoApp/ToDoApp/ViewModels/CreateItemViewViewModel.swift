@@ -3,6 +3,7 @@
 import SwiftUI
 
 class CreateItemViewViewModel: ObservableObject {
+    private let fileCache = FileCache(fileName: "myItems")
     @Published var height: CGFloat = Constants.textViewDefaultHeight
     @Published var isOn = false
     @Published var datePickerIsHidden = true
@@ -16,6 +17,9 @@ class CreateItemViewViewModel: ObservableObject {
     
     func save() {
         item.color = color.toHexString() ?? ""
+        fileCache.addTask(item)
+        fileCache.save()
+        print(item)
         // save function
     }
     
