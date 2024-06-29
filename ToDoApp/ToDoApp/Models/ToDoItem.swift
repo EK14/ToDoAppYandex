@@ -4,27 +4,30 @@ import Foundation
 
 struct ToDoItem {
     let id: String
-    let text: String
-    let importance: ItemImportance
-    let deadline: Date?
-    let done: Bool
+    var text: String
+    var importance: ItemImportance
+    var deadline: Date?
+    let isDone: Bool
     let createdAt: Date
     let changedAt: Date?
+    var color: String?
     
     init(id: String? = UUID().uuidString,
          text: String,
          importance: ItemImportance,
          deadline: Date? = nil,
-         done: Bool,
-         createdAt: Date,
-         changedAt: Date? = nil) {
+         isDone: Bool,
+         createdAt: Date = Date.now,
+         changedAt: Date? = nil,
+         color: String? = nil) {
         self.id = id ?? UUID().uuidString
         self.text = text
         self.importance = importance
         self.deadline = deadline
-        self.done = done
+        self.isDone = isDone
         self.createdAt = createdAt
         self.changedAt = changedAt
+        self.color = color
     }
 }
 
@@ -49,7 +52,7 @@ extension ToDoItem {
         
         jsonDict["created_at"] = createdAt.timeIntervalSince1970
 
-        jsonDict["done"] = done
+        jsonDict["done"] = isDone
         
         return jsonDict
     }
@@ -97,7 +100,7 @@ extension ToDoItem {
         
         let changedAt = jsonDict["changed_at"] as? TimeInterval
         
-        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, done: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) })
+        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, isDone: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) })
     }
 }
 
@@ -123,7 +126,7 @@ extension ToDoItem {
             let csvColumn = row.components(separatedBy: ",")
             let item = ToDoItem.init(text: csvColumn[0],
                                      importance: ItemImportance(rawValue: csvColumn[1]) ?? .basic,
-                                     done: Bool(csvColumn[2]) ?? false,
+                                     isDone: Bool(csvColumn[2]) ?? false,
                                      createdAt: Date(timeIntervalSince1970: TimeInterval(Int(csvColumn[3]) ?? 0)))
             toDoItems.append(item)
         }

@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct CreateEditItemView: View {
-    @StateObject var viewModel: CreateItemViewViewModel
+    @ObservedObject var viewModel: CreateItemViewViewModel
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
     var actionType: ItemActionType
@@ -17,13 +17,12 @@ struct CreateEditItemView: View {
 
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
-                            TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
+                            TextView(text: $viewModel.item.text, height: $viewModel.height, color: $viewModel.color)
 
-                            SettingsView(importance: $viewModel.importance,
+                            SettingsView(importance: $viewModel.item.importance,
                                          isOn: $viewModel.isOn,
-                                         datePickerIsHidden: $viewModel.datePickerIsHidden,
-                                         date: $viewModel.date,
-                                         color: $viewModel.color)
+                                         date: $viewModel.item.deadline,
+                                         color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
 
                             DeleteButton(actionType: actionType)
                         }
@@ -37,13 +36,12 @@ struct CreateEditItemView: View {
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
                             HStack(alignment: .top) {
-                                TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
+                                TextView(text: $viewModel.item.text, height: $viewModel.height, color: $viewModel.color)
 
-                                SettingsView(importance: $viewModel.importance,
+                                SettingsView(importance: $viewModel.item.importance,
                                              isOn: $viewModel.isOn,
-                                             datePickerIsHidden: $viewModel.datePickerIsHidden,
-                                             date: $viewModel.date,
-                                             color: $viewModel.color)
+                                             date: $viewModel.item.deadline,
+                                             color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
                                 .padding(.top, 16)
                             }
                         }
@@ -58,9 +56,9 @@ struct CreateEditItemView: View {
 struct SettingsView: View {
     @Binding var importance: ItemImportance
     @Binding var isOn: Bool
-    @Binding var datePickerIsHidden: Bool
-    @Binding var date: Date
+    @Binding var date: Date?
     @Binding var color: Color
+    @Binding var datePickerIsHidden: Bool
 
     var body: some View {
         VStack(spacing: .zero) {
@@ -69,7 +67,7 @@ struct SettingsView: View {
             Divider()
                 .padding(.horizontal, Constants.dividerHorizontalPadding)
 
-            DeadlineSegmentView(isOn: $isOn, datePickerIsHidden: $datePickerIsHidden, date: $date)
+            DeadlineSegmentView(isOn: $isOn, date: $date, datePickerIsHidden: $datePickerIsHidden)
 
             if !datePickerIsHidden {
                 Divider()

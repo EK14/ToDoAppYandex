@@ -22,7 +22,7 @@ struct NavigationToolBarModifier: ViewModifier {
                     } label: {
                         Text(T.save)
                     }
-                    .disabled(viewModel.text.isEmpty)
+                    .disabled(viewModel.item.text.isEmpty ? true: false)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button{

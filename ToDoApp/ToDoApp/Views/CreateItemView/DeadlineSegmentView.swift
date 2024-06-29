@@ -9,8 +9,8 @@ import SwiftUI
 
 struct DeadlineSegmentView: View {
     @Binding var isOn: Bool
+    @Binding var date: Date?
     @Binding var datePickerIsHidden: Bool
-    @Binding var date: Date
     
     var body: some View {
         HStack {
@@ -23,7 +23,7 @@ struct DeadlineSegmentView: View {
                             datePickerIsHidden.toggle()
                         }
                     } label: {
-                        Text(DateFormatterManager.shared.dateFormatter().string(from: date))
+                        Text(DateFormatterManager.shared.dateFormatter().string(from: date ?? Date.now.addingTimeInterval(86400)))
                             .foregroundStyle(C.blue.swiftUIColor)
                             .font(.footnote)
                     }

@@ -557,13 +557,13 @@
             filePath = "ToDoApp/Models/ToDoItem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "parse(json:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f0b"
+                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f49"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -573,12 +573,27 @@
                   urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Models/ToDoItem.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "532">
+               </Location>
+               <Location
+                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ToDoApp.ToDoItem.parse(json: Any) -&gt; Swift.Optional&lt;ToDoApp.ToDoItem&gt;"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Models/ToDoItem.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
                   offsetFromSymbolStart = "304">
                </Location>
                <Location
-                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f0b"
+                  uuid = "8F4F099D-FFBE-464C-8E95-EAFBC0E6172E - e9ca192ed90e5f6e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -588,8 +603,8 @@
                   urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Models/ToDoItem.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "61"
-                  endingLineNumber = "61"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
                   offsetFromSymbolStart = "520">
                </Location>
             </Locations>

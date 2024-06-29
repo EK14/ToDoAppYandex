@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct DatePickerView: View {
-    @Binding var date: Date
+    @Binding var date: Date?
     @Binding var datePickerIsHidden: Bool
-    
+
+
     var body: some View {
         DatePicker(
             "",
-            selection: $date,
+            selection: Binding<Date>(
+                get: { date ?? Date.now.addingTimeInterval(86400) },
+                set: { newDate in
+                    withAnimation {
+                        date = newDate
+                    }
+                }
+            ),
             in: Date.now.addingTimeInterval(86400)...,
             displayedComponents: [.date]
         )
@@ -22,10 +30,6 @@ struct DatePickerView: View {
         .background(C.backSecondary.swiftUIColor)
         .padding(.horizontal, 16)
         .environment(\.locale, Locale.init(identifier: "ru"))
-        .onChange(of: date) {
-            withAnimation {
-                datePickerIsHidden = true
-            }
-        }
     }
 }
+
