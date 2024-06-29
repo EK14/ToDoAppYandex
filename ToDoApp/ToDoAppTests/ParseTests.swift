@@ -26,7 +26,7 @@ class ParseTests: XCTestCase {
         XCTAssertEqual(item?.text, "Test task")
         XCTAssertEqual(item?.importance, .basic)
         XCTAssertEqual(item?.deadline, Date(timeIntervalSince1970: 1617120000))
-        XCTAssertFalse(item?.done ?? true)
+        XCTAssertFalse(item?.isDone ?? true)
         XCTAssertEqual(item?.createdAt, Date(timeIntervalSince1970: 1617033600))
         XCTAssertEqual(item?.changedAt, Date(timeIntervalSince1970: 1617033600))
     }
@@ -96,7 +96,7 @@ class ParseTests: XCTestCase {
         let item = ToDoItem.parse(json: json)
 
         XCTAssertNotNil(item)
-        XCTAssertFalse(item!.done)
+        XCTAssertFalse(item!.isDone)
     }
 
     func testParseMissingChangedAt() {
@@ -126,7 +126,7 @@ class ParseTests: XCTestCase {
         XCTAssertEqual(item?.text, "Test task")
         XCTAssertEqual(item?.importance, .important)
         XCTAssertEqual(item?.deadline, Date(timeIntervalSince1970: 1617120000))
-        XCTAssertEqual(item?.done, true)
+        XCTAssertEqual(item?.isDone, true)
         XCTAssertEqual(item?.createdAt, Date(timeIntervalSince1970: 1617033600))
         XCTAssertEqual(item?.changedAt, Date(timeIntervalSince1970: 1617033600))
     }

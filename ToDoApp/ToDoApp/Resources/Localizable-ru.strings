@@ -1,0 +1,16 @@
+
+//CreateItem
+"Save" = "Сохранить";
+"Cancel" = "Отменить";
+"Item" = "Дело";
+"What need to do" = "Что надо сделать?";
+"Delete" = "Удалить";
+"Importance" = "Важность";
+"DoBefore" = "Сделать до";
+"No" = "Нет";
+"Color" = "Цвет";
+
+//SF-symbols
+"arrowDown" = "arrow.down";
+"exclamationMark" = "exclamationmark.2";
+"plus" = "plus";
