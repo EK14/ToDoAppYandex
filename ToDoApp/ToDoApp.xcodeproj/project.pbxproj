@@ -45,6 +45,7 @@
 		C3EBBC6D2C2F51EE00C09F51 /* NavigationToolBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */; };
 		C3EBBC6F2C2F5E7200C09F51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC6E2C2F5E7200C09F51 /* ContentView.swift */; };
 		C3EBBC712C2FC3D100C09F51 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC702C2FC3D100C09F51 /* ListItemView.swift */; };
+		C3EBBC732C2FE01B00C09F51 /* NewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC722C2FE01B00C09F51 /* NewItemCell.swift */; };
 		C3F06BCB2C25AF96000BB3F7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationToolBarModifier.swift; sourceTree = "<group>"; };
 		C3EBBC6E2C2F5E7200C09F51 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3EBBC702C2FC3D100C09F51 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		C3EBBC722C2FE01B00C09F51 /* NewItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCell.swift; sourceTree = "<group>"; };
 		C3F06BC82C25AF96000BB3F7 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F06BCA2C25AF96000BB3F7 /* ParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 				C3EBBC5D2C2F3BA300C09F51 /* CreateItemView */,
 				C38D29EA2C270648009C60BF /* MainView.swift */,
 				C3EBBC702C2FC3D100C09F51 /* ListItemView.swift */,
+				C3EBBC722C2FE01B00C09F51 /* NewItemCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				C3EBBC6F2C2F5E7200C09F51 /* ContentView.swift in Sources */,
 				C3EBBC6B2C2F513700C09F51 /* DatePickerView.swift in Sources */,
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
+				C3EBBC732C2FE01B00C09F51 /* NewItemCell.swift in Sources */,
 				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,
 				C3EBBC6D2C2F51EE00C09F51 /* NavigationToolBarModifier.swift in Sources */,
 				C3E300222C2B723F009C76E6 /* CreateItemViewViewModel.swift in Sources */,

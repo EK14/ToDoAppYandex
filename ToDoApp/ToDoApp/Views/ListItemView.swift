@@ -15,7 +15,9 @@ struct ListItemView: View {
         HStack {
             HStack {
                 Button {
-                    item.isDone.toggle()
+                    withAnimation {
+                        item.isDone.toggle()
+                    }
                 } label: {
                     if item.isDone {
                         Circle()

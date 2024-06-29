@@ -38,6 +38,8 @@ struct DeadlineSegmentView: View {
                         withAnimation {
                             datePickerIsHidden = true
                         }
+                    } else {
+                        date = Date.now.addingTimeInterval(86400)
                     }
                 }
         }

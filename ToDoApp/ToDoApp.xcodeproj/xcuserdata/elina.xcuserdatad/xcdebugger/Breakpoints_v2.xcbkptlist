@@ -36,5 +36,128 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "CreateEditItemView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - d17d2cae40090606"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of ToDoApp.CreateEditItemView.viewModel : ToDoApp.CreateItemViewViewModel"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - 84ddf562661ad83a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.CreateEditItemView.viewModel.getter : ToDoApp.CreateItemViewViewModel"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - 57cb7cc6a1dbaf7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.CreateEditItemView.viewModel.setter : ToDoApp.CreateItemViewViewModel"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - 4a16e9054af7966d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.CreateEditItemView.viewModel.modify : ToDoApp.CreateItemViewViewModel"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - b583b871467b606a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.CreateEditItemView.viewModel.modify : ToDoApp.CreateItemViewViewModel with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - aeb85ca0ca9cf2b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ToDoApp.CreateEditItemView.$viewModel.getter : SwiftUI.ObservedObject&lt;ToDoApp.CreateItemViewViewModel&gt;.Wrapper"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "22D779B5-290C-4872-BD74-3D661F6E4AC2 - be4920fbc80282"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of ToDoApp.CreateEditItemView.init(viewModel: ToDoApp.CreateItemViewViewModel, mainViewViewModel: ToDoApp.MainViewViewModel, verticalSizeClass: SwiftUI.Environment&lt;Swift.Optional&lt;SwiftUI.UserInterfaceSizeClass&gt;&gt;, presentationMode: SwiftUI.Environment&lt;SwiftUI.Binding&lt;SwiftUI.PresentationMode&gt;&gt;, actionType: ToDoApp.ItemActionType) -&gt; ToDoApp.CreateEditItemView"
+                  moduleName = "ToDoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/Views/CreateItemView/CreateEditItemView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
