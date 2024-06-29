@@ -3,7 +3,8 @@
 import SwiftUI
 
 struct CreateEditItemView: View {
-    @ObservedObject var viewModel: CreateItemViewViewModel
+    @ObservedObject var viewModel = CreateItemViewViewModel()
+    @ObservedObject var mainViewViewModel: MainViewViewModel
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
     var actionType: ItemActionType
@@ -28,7 +29,7 @@ struct CreateEditItemView: View {
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel, mainViewViewModel: mainViewViewModel))
             } else {
                 ZStack {
                     Color(C.backPrimary.color)
@@ -49,7 +50,7 @@ struct CreateEditItemView: View {
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel, mainViewViewModel: mainViewViewModel))
             }
         }
     }

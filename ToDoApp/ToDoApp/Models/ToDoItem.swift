@@ -7,7 +7,7 @@ struct ToDoItem {
     var text: String
     var importance: ItemImportance
     var deadline: Date?
-    let isDone: Bool
+    var isDone: Bool
     let createdAt: Date
     let changedAt: Date?
     var color: String?

@@ -4,33 +4,59 @@ import SwiftUI
 
 struct MainView: View {
     @State var createItem = false
-    @ObservedObject var viewModel = CreateItemViewViewModel()
+    @ObservedObject var viewModel = MainViewViewModel()
     
     var body: some View {
-        ZStack {
-            Color(C.backPrimary.swiftUIColor)
-                .ignoresSafeArea()
-            
-            VStack {
-                Spacer()
+        NavigationStack {
+            ZStack {
+                Color(C.backPrimary.swiftUIColor)
+                    .ignoresSafeArea()
                 
-                Button {
-                    createItem.toggle()
-                } label: {
-                    Image(systemName: T.plus)
-                        .resizable()
-                        .padding(10)
-                        .foregroundColor(.white)
-                        .frame(width: 44, height: 44)
-                        .background(C.blue.swiftUIColor)
-                        .clipShape(Circle())
-                        .shadow(radius: 20)
+                VStack {
+                    HStack {
+                        Text("Выполнено - \(viewModel.countDoneItems)")
+                            .foregroundStyle(C.labelTertiary.swiftUIColor)
+                        
+                        Spacer()
+                        
+                        Button{
+                            
+                        } label: {
+                            Text("Показать")
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    
+                    List {
+                        ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
+                            ListItemView(item: $viewModel.items[index], countDoneItems: $viewModel.countDoneItems)
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .foregroundStyle(C.backSecondary.swiftUIColor)
+
+                    
+                    Spacer()
+                    
+                    Button {
+                        createItem.toggle()
+                    } label: {
+                        Image(systemName: T.plus)
+                            .resizable()
+                            .padding(10)
+                            .foregroundColor(.white)
+                            .frame(width: 44, height: 44)
+                            .background(C.blue.swiftUIColor)
+                            .clipShape(Circle())
+                            .shadow(radius: 20)
+                    }
                 }
+                .padding(.bottom, 20)
+                .sheet(isPresented: $createItem, content: {
+                    CreateEditItemView(mainViewViewModel: viewModel, actionType: .create)
+                })
+                .navigationTitle("Мои дела")
             }
-            .padding(.bottom, 20)
-            .sheet(isPresented: $createItem, content: {
-                CreateEditItemView(viewModel: viewModel, actionType: .create)
-            })
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct NavigationToolBarModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CreateItemViewViewModel
+    @ObservedObject var mainViewViewModel: MainViewViewModel
     
     func body(content: Content) -> some View {
         content
@@ -19,6 +20,8 @@ struct NavigationToolBarModifier: ViewModifier {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
                         viewModel.save()
+                        mainViewViewModel.items.append(viewModel.item)
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text(T.save)
                     }

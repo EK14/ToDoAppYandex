@@ -3,5 +3,6 @@
 import SwiftUI
 
 class MainViewViewModel: ObservableObject {
-    
+    @Published var countDoneItems = 0
+    @Published var items = [ToDoItem]()
 }

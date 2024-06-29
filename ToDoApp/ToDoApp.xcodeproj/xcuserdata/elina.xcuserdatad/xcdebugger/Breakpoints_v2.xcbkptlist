@@ -678,7 +678,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DD678512-752C-45EE-9503-724A4BA949C4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ToDoApp/ViewModels/CreateItemViewViewModel.swift"
@@ -690,7 +690,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "DD678512-752C-45EE-9503-724A4BA949C4 - 2796f9b827b1aaab"
+                  uuid = "DD678512-752C-45EE-9503-724A4BA949C4 - 2796f9b827b1aac8"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -700,39 +700,9 @@
                   urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/ViewModels/CreateItemViewViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "488">
-               </Location>
-               <Location
-                  uuid = "DD678512-752C-45EE-9503-724A4BA949C4 - 2796f9b827b1aa8a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoApp.CreateItemViewViewModel.save() -&gt; ()"
-                  moduleName = "ToDoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/ViewModels/CreateItemViewViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "648">
-               </Location>
-               <Location
-                  uuid = "DD678512-752C-45EE-9503-724A4BA949C4 - 2796f9b827b1aa8a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ToDoApp.CreateItemViewViewModel.save() -&gt; ()"
-                  moduleName = "ToDoApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/elina/Developer/ToDoAppYandex/ToDoApp/ToDoApp/ViewModels/CreateItemViewViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "556">
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "624">
                </Location>
                <Location
                   uuid = "DD678512-752C-45EE-9503-724A4BA949C4 - 2796f9b827b1aa8a"
@@ -750,6 +720,22 @@
                   offsetFromSymbolStart = "528">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2301B6A-67EE-4EB7-A4BD-A4A75EC7138A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ToDoApp/Views/ListItemView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
