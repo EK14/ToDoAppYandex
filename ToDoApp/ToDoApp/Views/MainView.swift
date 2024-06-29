@@ -14,7 +14,7 @@ struct MainView: View {
                 
                 VStack {
                     HStack {
-                        Text("Выполнено - \(viewModel.countDoneItems)")
+                        Text("Выполнено — \(viewModel.countDoneItems)")
                             .foregroundStyle(C.labelTertiary.swiftUIColor)
                         
                         Spacer()
@@ -29,7 +29,7 @@ struct MainView: View {
                     
                     List {
                         ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
-                            ListItemView(item: $viewModel.items[index], countDoneItems: $viewModel.countDoneItems)
+                            ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
                         }
                     }
                     .scrollContentBackground(.hidden)

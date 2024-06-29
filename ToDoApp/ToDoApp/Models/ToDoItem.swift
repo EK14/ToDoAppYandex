@@ -47,12 +47,12 @@ extension ToDoItem {
 
         // Save deadline only if it is specified
         if let deadline = deadline {
-            jsonDict["deadline"] = deadline
+            jsonDict["deadline"] = deadline.timeIntervalSince1970
         }
         
         jsonDict["created_at"] = createdAt.timeIntervalSince1970
 
-        jsonDict["done"] = isDone
+        jsonDict["isDone"] = isDone
         
         return jsonDict
     }

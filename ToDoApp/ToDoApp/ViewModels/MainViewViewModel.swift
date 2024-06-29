@@ -3,6 +3,13 @@
 import SwiftUI
 
 class MainViewViewModel: ObservableObject {
-    @Published var countDoneItems = 0
-    @Published var items = [ToDoItem]()
+    @Published var items = [ToDoItem(text: "Купить что-то", importance: .basic, isDone: true)]
+
+    var countDoneItems: Int {
+        items.filter { $0.isDone }.count
+    }
+
+    func removeTask(_ taskID: String) {
+        items.removeAll(where: { $0.id == taskID })
+    }
 }

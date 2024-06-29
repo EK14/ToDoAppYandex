@@ -9,18 +9,13 @@ import SwiftUI
 
 struct ListItemView: View {
     @Binding var item: ToDoItem
-    @Binding var countDoneItems: Int
+    var deleteAction: (String) -> ()
     
     var body: some View {
         HStack {
             HStack {
                 Button {
                     item.isDone.toggle()
-                    if item.isDone {
-                        countDoneItems += 1
-                    } else {
-                        countDoneItems -= 1
-                    }
                 } label: {
                     if item.isDone {
                         Circle()
@@ -54,15 +49,31 @@ struct ListItemView: View {
                 }
                 .buttonStyle(.borderless)
                 
-                HStack {
-                    if item.importance == .important {
-                        Image(systemName: T.exclamationMark)
-                            .foregroundStyle(C.red.swiftUIColor)
+                VStack(alignment: .leading) {
+                    HStack {
+                        if item.importance == .important {
+                            Image(systemName: T.exclamationMark)
+                                .foregroundStyle(C.red.swiftUIColor)
+                        } else if item.importance == .low {
+                            Image(systemName: T.arrowDown)
+                                .foregroundStyle(C.gray.swiftUIColor)
+                        }
+                        
+                        Text(item.text)
+                            .foregroundStyle(item.isDone ? C.labelTertiary.swiftUIColor:  C.labelPrimary.swiftUIColor)
+                            .strikethrough(item.isDone)
+                            .lineLimit(3)
                     }
                     
-                    Text(item.text)
-                        .foregroundStyle(item.isDone ? C.labelTertiary.swiftUIColor:  C.labelPrimary.swiftUIColor)
-                        .strikethrough(item.isDone)
+                    if let deadline = item.deadline {
+                        HStack(spacing: 2) {
+                            Image(systemName: "calendar")
+                            
+                            Text(DateFormatterManager.shared.dateFormatter().string(from: deadline))
+                                .font(.footnote)
+                            }
+                                .foregroundStyle(C.labelTertiary.swiftUIColor)
+                        }
                 }
             }
             
@@ -78,18 +89,46 @@ struct ListItemView: View {
         }
         .swipeActions(edge: .leading) {
             Button {
-             
+                withAnimation {
+                    item.isDone.toggle()
+                }
             } label: {
                 Circle()
                     .fill(C.white.swiftUIColor)
-                    .frame(width: 24, height: 24)
                     .overlay(
-                        Image(systemName: "checkmark")
+                        Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(C.green.swiftUIColor)
-                            .padding()
                     )
             }
             .tint(C.green.swiftUIColor)
+        }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(role: .destructive) {
+                withAnimation {
+                    deleteAction(item.id)
+                }
+            } label: {
+                Circle()
+                    .fill(C.white.swiftUIColor)
+                    .overlay(
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(C.white.swiftUIColor)
+                    )
+            }
+            .tint(C.red.swiftUIColor)
+        }
+        .swipeActions(edge: .trailing) {
+            Button {
+                
+            } label: {
+                Circle()
+                    .fill(C.white.swiftUIColor)
+                    .overlay(
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(C.white.swiftUIColor)
+                    )
+            }
+            .tint(C.grayLight.swiftUIColor)
         }
     }
 }
@@ -97,5 +136,5 @@ struct ListItemView: View {
 #Preview {
     @State var item = ToDoItem(text: "Купить что-то", importance: .basic, isDone: true)
     @State var count = 0
-    return ListItemView(item: $item, countDoneItems: $count)
+    return ListItemView(item: $item, deleteAction: {_ in print("hello")})
 }
