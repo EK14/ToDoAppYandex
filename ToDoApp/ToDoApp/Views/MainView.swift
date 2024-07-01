@@ -13,45 +13,52 @@ struct MainView: View {
                 ZStack {
                     Color(C.backPrimary.swiftUIColor)
                         .ignoresSafeArea()
+                    
+                    List {
+                        Section(header: HStack {
+                            Text("Выполнено — \(viewModel.countDoneItems)")
+                                .foregroundStyle(C.labelTertiary.swiftUIColor)
                             
-                            List {
-                                Section(header: HStack {
-                                    Text("Выполнено — \(viewModel.countDoneItems)")
-                                        .foregroundStyle(C.labelTertiary.swiftUIColor)
-                                    
-                                    Spacer()
-                                    
-                                    Button{
-                                        showAllItems.toggle()
-                                    } label: {
-                                        Text(showAllItems ? "Скрыть": "Показать")
-                                            .foregroundStyle(C.blue.swiftUIColor)
-                                    }
-                                }
-                                .textCase(nil)
-                                .listRowInsets(EdgeInsets())
-                                .padding(.bottom, 5)) {
-                                    ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
-                                        if showAllItems {
+                            Spacer()
+                            
+                            Button{
+                                showAllItems.toggle()
+                            } label: {
+                                Text(showAllItems ? "Скрыть": "Показать")
+                                    .foregroundStyle(C.blue.swiftUIColor)
+                            }
+                        }
+                            .textCase(nil)
+                            .listRowInsets(EdgeInsets())
+                            .padding(.bottom, 5)) {
+                                ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
+                                    if showAllItems {
+                                        ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
+                                    } else {
+                                        if !item.isDone {
                                             ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
-                                        } else {
-                                            if !item.isDone {
-                                                ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
-                                            }
                                         }
                                     }
-                                    
-                                    NewItemCell(createItem: $createItem)
                                 }
+                                
+                                NewItemCell(createItem: $createItem)
                             }
-                            .scrollContentBackground(.hidden)
-                            .foregroundStyle(C.backSecondary.swiftUIColor)
+                    }
+                    .scrollContentBackground(.hidden)
+                    .foregroundStyle(C.backSecondary.swiftUIColor)
                 }
                 .ignoresSafeArea(edges: .bottom)
                 .sheet(isPresented: $createItem, content: {
                     CreateEditItemView(mainViewViewModel: viewModel, actionType: .create)
                 })
                 .navigationTitle("Мои дела")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: CalendarViewControllerRepresentable().navigationBarTitle("Мои дела").navigationBarTitleDisplayMode(.inline).ignoresSafeArea()) {
+                            Image(systemName: "calendar")
+                        }
+                    }
+                }
             }
             
             VStack {
