@@ -14,7 +14,8 @@ struct CreateEditItemView: View {
             if verticalSizeClass == .regular {
                 ZStack {
                     Color(C.backPrimary.color)
-                        .ignoresSafeArea()
+                        .edgesIgnoringSafeArea(.all)
+                        
 
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
@@ -33,7 +34,7 @@ struct CreateEditItemView: View {
             } else {
                 ZStack {
                     Color(C.backPrimary.color)
-                        .ignoresSafeArea()
+                        .edgesIgnoringSafeArea(.all)
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
                             HStack(alignment: .top) {
@@ -62,6 +63,7 @@ struct SettingsView: View {
     @Binding var date: Date?
     @Binding var color: Color
     @Binding var datePickerIsHidden: Bool
+    @State private var showColorPicker = false
 
     var body: some View {
         VStack(spacing: .zero) {
@@ -82,7 +84,32 @@ struct SettingsView: View {
             Divider()
                 .padding(.horizontal, Constants.dividerHorizontalPadding)
 
-            ColorPickerView(color: $color)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Цвет")
+                    
+                    Text(color.toHexString()!)
+                        .foregroundStyle(C.blue.swiftUIColor)
+                        .font(.footnote)
+                }
+                
+                Spacer()
+                
+                Button {
+                    showColorPicker.toggle()
+                } label: {
+                    Text("Выбрать")
+                }
+            }
+            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.vertical, Constants.verticalPadding)
+            .background(C.backSecondary.swiftUIColor)
+            .cornerRadius(Constants.cornerRadius, corners: [.bottomLeft, .bottomRight])
+            .padding(.horizontal, Constants.horizontalPadding)
+
         }
+        .sheet(isPresented: $showColorPicker, content: {
+            ColorPickerView(color: $color)
+        })
     }
 }
