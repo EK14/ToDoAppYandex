@@ -34,9 +34,11 @@ struct MainView: View {
                                 ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
                                     if showAllItems {
                                         ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
+                                            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                                     } else {
                                         if !item.isDone {
                                             ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
+                                                .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                                         }
                                     }
                                 }

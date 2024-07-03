@@ -88,6 +88,10 @@ struct ListItemView: View {
                     .foregroundStyle(C.labelTertiary.swiftUIColor)
             }
             .buttonStyle(.borderless)
+            
+            Rectangle()
+                .fill(Color(uiColor: UIColor.init(hex: item.color ?? "") ?? .blue))
+                .frame(width: Constants.coloredRectangleWidth)
         }
         .swipeActions(edge: .leading) {
             Button {
