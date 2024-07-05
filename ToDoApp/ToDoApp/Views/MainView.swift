@@ -5,7 +5,7 @@ import SwiftUI
 struct MainView: View {
     @State var createItem = false
     @State var showAllItems = false
-    @ObservedObject var viewModel = MainViewViewModel()
+    @ObservedObject var viewModel = TodoListViewModel()
     
     var body: some View {
         ZStack {
@@ -33,11 +33,11 @@ struct MainView: View {
                             .padding(.bottom, 5)) {
                                 ForEach(Array(viewModel.items.enumerated()), id: \.element.id) { index, item in
                                     if showAllItems {
-                                        ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
+                                        ListItemView(item: $viewModel.items[index], viewModel: viewModel)
                                             .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                                     } else {
                                         if !item.isDone {
-                                            ListItemView(item: $viewModel.items[index], deleteAction: viewModel.removeTask(_:))
+                                            ListItemView(item: $viewModel.items[index], viewModel: viewModel)
                                                 .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                                         }
                                     }
@@ -48,10 +48,11 @@ struct MainView: View {
                     }
                     .scrollContentBackground(.hidden)
                     .foregroundStyle(C.backSecondary.swiftUIColor)
+                    
                 }
                 .ignoresSafeArea(edges: .bottom)
                 .sheet(isPresented: $createItem, content: {
-                    CreateEditItemView(mainViewViewModel: viewModel, actionType: .create)
+                    CreateEditItemView(viewModel: CreateItemViewViewModel(todoListViewModel: viewModel), actionType: .create)
                 })
                 .navigationTitle("Мои дела")
                 .toolbar {

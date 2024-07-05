@@ -33,7 +33,7 @@ class FileCache {
     func save() {
         let todoItemsData = todoItems.map { $0.json }
         do {
-            let fileUrl = appFolderPath.appendingPathComponent("\(fileName).txt")
+            let fileUrl = appFolderPath.appendingPathComponent("\(fileName).json")
             let jsonData = try JSONSerialization.data(withJSONObject: todoItemsData)
             manager.createFile(atPath: fileUrl.path, contents: jsonData)
         } catch {
@@ -42,7 +42,7 @@ class FileCache {
     }
 
     func upload() {
-        let fileUrl = appFolderPath.appendingPathComponent("\(fileName).txt")
+        let fileUrl = appFolderPath.appendingPathComponent("\(fileName).json")
         if let data = try? Data(contentsOf: fileUrl) {
             if let loadedItems = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                 todoItems = loadedItems.compactMap { ToDoItem.parse(json: $0) }

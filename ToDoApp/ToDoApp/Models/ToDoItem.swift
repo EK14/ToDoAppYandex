@@ -4,13 +4,13 @@ import Foundation
 
 struct ToDoItem {
     let id: String
-    var text: String
-    var importance: ItemImportance
-    var deadline: Date?
-    var isDone: Bool
+    let text: String
+    let importance: ItemImportance
+    let deadline: Date?
+    let isDone: Bool
     let createdAt: Date
     let changedAt: Date?
-    var color: String?
+    let color: String?
     
     init(id: String? = UUID().uuidString,
          text: String,
@@ -54,6 +54,8 @@ extension ToDoItem {
 
         jsonDict["isDone"] = isDone
         
+        jsonDict["color"] = color
+        
         return jsonDict
     }
     
@@ -69,7 +71,7 @@ extension ToDoItem {
                 print(error.localizedDescription)
             }
         } else if let json = json as? [String: Any] {
-            print(Date(timeIntervalSince1970: 6.7))
+            
             guard let data = try? JSONSerialization.data(withJSONObject: json) else {
                 return nil
             }
@@ -89,18 +91,19 @@ extension ToDoItem {
         
         guard let text = jsonDict["text"] as? String,
               let createdAt = jsonDict["created_at"] as? TimeInterval,
-              let importanceString = jsonDict["importance"] as? String,
-              let importance = ItemImportance(rawValue: importanceString) else {
+              let importance = ItemImportance(rawValue: jsonDict["importance"] as? String ?? "basic") else {
             return nil
         }
         
         let deadline = jsonDict["deadline"] as? TimeInterval
         
-        let done = jsonDict["done"] as? Bool ?? false
+        let done = jsonDict["isDone"] as? Bool ?? false
         
         let changedAt = jsonDict["changed_at"] as? TimeInterval
         
-        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, isDone: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) })
+        let color = jsonDict["color"] as? String
+        
+        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, isDone: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) }, color: color)
     }
 }
 

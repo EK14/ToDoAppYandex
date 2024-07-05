@@ -3,8 +3,8 @@
 import SwiftUI
 
 struct CreateEditItemView: View {
-    @ObservedObject var viewModel = CreateItemViewViewModel()
-    @ObservedObject var mainViewViewModel: MainViewViewModel
+    @ObservedObject var viewModel: CreateItemViewViewModel
+//    @ObservedObject var mainViewViewModel: TodoListViewModel
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
     var actionType: ItemActionType
@@ -19,18 +19,18 @@ struct CreateEditItemView: View {
 
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
-                            TextView(text: $viewModel.item.text, height: $viewModel.height, color: $viewModel.color)
+                            TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
 
-                            SettingsView(importance: $viewModel.item.importance,
+                            SettingsView(importance: $viewModel.importance,
                                          isOn: $viewModel.isOn,
-                                         date: $viewModel.item.deadline,
+                                         date: $viewModel.deadline,
                                          color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
 
                             DeleteButton(actionType: actionType)
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel, mainViewViewModel: mainViewViewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel))
             } else {
                 ZStack {
                     Color(C.backPrimary.color)
@@ -38,11 +38,11 @@ struct CreateEditItemView: View {
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
                             HStack(alignment: .top) {
-                                TextView(text: $viewModel.item.text, height: $viewModel.height, color: $viewModel.color)
+                                TextView(text: $viewModel.text, height: $viewModel.height, color: $viewModel.color)
 
-                                SettingsView(importance: $viewModel.item.importance,
+                                SettingsView(importance: $viewModel.importance,
                                              isOn: $viewModel.isOn,
-                                             date: $viewModel.item.deadline,
+                                             date: $viewModel.deadline,
                                              color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
                                 .padding(.top, 16)
                             }
@@ -51,7 +51,7 @@ struct CreateEditItemView: View {
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel, mainViewViewModel: mainViewViewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel))
             }
         }
     }
