@@ -49,11 +49,4 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             verticalStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
-//    override var isSelected: Bool {
-//        didSet {
-//            day.textColor = isSelected ? .white : .black
-//            month.textColor = isSelected ?
-//        }
-//    }
 }

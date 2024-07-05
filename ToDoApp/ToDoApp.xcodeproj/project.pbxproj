@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C359B0BA2C38962400422F7A /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C359B0B92C38962400422F7A /* Collections */; };
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
 		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
 		C396B3C92C2A085400A695E6 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */; };
@@ -47,7 +48,6 @@
 		C3EBBC732C2FE01B00C09F51 /* NewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC722C2FE01B00C09F51 /* NewItemCell.swift */; };
 		C3EBBC862C3225B400C09F51 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC852C3225B400C09F51 /* CalendarViewController.swift */; };
 		C3EBBC892C32263500C09F51 /* CalendarViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC882C32263500C09F51 /* CalendarViewControllerRepresentable.swift */; };
-		C3EBBC8B2C3227B200C09F51 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC8A2C3227B200C09F51 /* CalendarView.swift */; };
 		C3EBBC8D2C322E2D00C09F51 /* CalendarDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC8C2C322E2D00C09F51 /* CalendarDayCollectionViewCell.swift */; };
 		C3EBBC8F2C323BAD00C09F51 /* OtherDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC8E2C323BAD00C09F51 /* OtherDateCollectionViewCell.swift */; };
 		C3EBBC912C32BC2B00C09F51 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBC902C32BC2B00C09F51 /* CalendarTableViewCell.swift */; };
@@ -100,7 +100,6 @@
 		C3EBBC722C2FE01B00C09F51 /* NewItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemCell.swift; sourceTree = "<group>"; };
 		C3EBBC852C3225B400C09F51 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C3EBBC882C32263500C09F51 /* CalendarViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerRepresentable.swift; sourceTree = "<group>"; };
-		C3EBBC8A2C3227B200C09F51 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C3EBBC8C2C322E2D00C09F51 /* CalendarDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3EBBC8E2C323BAD00C09F51 /* OtherDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		C3EBBC902C32BC2B00C09F51 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C359B0BA2C38962400422F7A /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +258,6 @@
 			children = (
 				C3EBBC852C3225B400C09F51 /* CalendarViewController.swift */,
 				C3EBBC882C32263500C09F51 /* CalendarViewControllerRepresentable.swift */,
-				C3EBBC8A2C3227B200C09F51 /* CalendarView.swift */,
 				C3EBBC8C2C322E2D00C09F51 /* CalendarDayCollectionViewCell.swift */,
 				C3EBBC8E2C323BAD00C09F51 /* OtherDateCollectionViewCell.swift */,
 				C3EBBC902C32BC2B00C09F51 /* CalendarTableViewCell.swift */,
@@ -294,6 +293,9 @@
 			dependencies = (
 			);
 			name = ToDoApp;
+			packageProductDependencies = (
+				C359B0B92C38962400422F7A /* Collections */,
+			);
 			productName = ToDoApp;
 			productReference = C3C572D42C1DC0D100314F5E /* ToDoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -344,6 +346,9 @@
 				Base,
 			);
 			mainGroup = C3C572CB2C1DC0D100314F5E;
+			packageReferences = (
+				C359B0B82C38962400422F7A /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = C3C572D52C1DC0D100314F5E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -408,7 +413,6 @@
 				C3EBBC732C2FE01B00C09F51 /* NewItemCell.swift in Sources */,
 				C3EBBC892C32263500C09F51 /* CalendarViewControllerRepresentable.swift in Sources */,
 				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,
-				C3EBBC8B2C3227B200C09F51 /* CalendarView.swift in Sources */,
 				C3EBBC6D2C2F51EE00C09F51 /* NavigationToolBarModifier.swift in Sources */,
 				C3E300222C2B723F009C76E6 /* CreateItemViewViewModel.swift in Sources */,
 				C3EBBC632C2F3FAB00C09F51 /* ImportanceSegmentView.swift in Sources */,
@@ -708,6 +712,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C359B0B82C38962400422F7A /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C359B0B92C38962400422F7A /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C359B0B82C38962400422F7A /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C3C572CC2C1DC0D100314F5E /* Project object */;
 }

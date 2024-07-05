@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import Collections
 
 class CalendarViewController: UIViewController {
     
-    private var calendarView = CalendarView(frame: .zero)
     private var calendarDaycollectionView: UICollectionView! = nil
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -18,30 +18,21 @@ class CalendarViewController: UIViewController {
         return tableView
     }()
     private let fileCache = FileCache.shared
-    private var days = [Date]()
+    private var days = [String]()
     private var items = [ToDoItem]()
-
-    private let shortDayOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
-    private var select = 0
-    private var sectionData = [["Купить сыр", "Сделать пиццу", "Задание"],
-                               ["Купить сыр", "Сделать пиццу"],
-                               ["Купить сыр", "Сделать пиццу"],
-                               ["Купить сыр", "Сделать пиццу"]]
-    private var titles = ["30 июня", "10 июля", "12 июля", "25 июля"]
+    private var selectedDay = 0
+    private var sectionData = [[String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = C.backPrimary.color
         fileCache.saveAction = { [weak self] in
             guard let self else { return }
             setupCollectionViewData()
-            self.tableView.reloadData()
+            setupTableViewData()
         }
         setupCollectionViews()
         setupTableView()
-    }
-    
-    override func loadView() {
-        view = calendarView
     }
 
     private func setupCollectionViews(){
@@ -54,7 +45,8 @@ class CalendarViewController: UIViewController {
         calendarDaycollectionView.delegate = self
         calendarDaycollectionView.showsHorizontalScrollIndicator = false
         calendarDaycollectionView.translatesAutoresizingMaskIntoConstraints = false
-        calendarDaycollectionView.register(CalendarDayCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        calendarDaycollectionView.register(CalendarDayCollectionViewCell.self, forCellWithReuseIdentifier: "calendarcell")
+        calendarDaycollectionView.register(OtherDateCollectionViewCell.self, forCellWithReuseIdentifier: "othercell")
         calendarDaycollectionView.allowsMultipleSelection = false
         calendarDaycollectionView.backgroundColor = C.backPrimary.color
 
@@ -87,16 +79,21 @@ class CalendarViewController: UIViewController {
     private func setupCollectionViewData() {
         fileCache.upload()
         items = fileCache.todoItems
-        for item in items {
-            guard let date = item.deadline, !days.contains(date) else { continue }
-            days.append(date)
+        
+        let sortedItems = items.sorted { $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture }
+        
+        for item in sortedItems {
+            guard let date = item.deadline else { continue }
+            let dateString = DateFormatterManager.shared.dateFormatter().string(from: date)
+            guard !days.contains(dateString) else { continue }
+            days.append(dateString)
         }
-        days = days.sorted()
+        
         calendarDaycollectionView.reloadData()
     }
     
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tablecell")
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -108,31 +105,79 @@ class CalendarViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        setupTableViewData()
+    }
+    
+    private func setupTableViewData() {
+        let sortedItems = items.sorted { $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture }
+
+        var dateDictionary = OrderedDictionary<String, [String]>()
+
+        for item in sortedItems {
+            if let deadline = item.deadline {
+                let dateString = DateFormatterManager.shared.dateFormatter().string(from: deadline)
+                if var itemsForDate = dateDictionary[dateString] {
+                    itemsForDate.append(item.text)
+                    dateDictionary[dateString] = itemsForDate
+                } else {
+                    dateDictionary[dateString] = [item.text]
+                }
+            } else {
+                if var itemsForDate = dateDictionary["Другое"] {
+                    itemsForDate.append(item.text)
+                    dateDictionary["Другое"] = itemsForDate
+                } else {
+                    dateDictionary["Другое"] = [item.text]
+                }
+            }
+        }
+
+        sectionData = Array(dateDictionary.values)
+
+        tableView.reloadData()
     }
 }
 
 extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        days.count
+        days.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CalendarDayCollectionViewCell else { return UICollectionViewCell() }
-        cell.setCell(
-            day: DateFormatterManager.shared.getDay().string(from: days[indexPath.row]),
-            month: DateFormatterManager.shared.getMonth().string(from: days[indexPath.row])
-        )
-        if (indexPath.row == select){
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.top)
-            cell.backgroundColor = C.calendarBackground.color
-            cell.layer.borderWidth = 2.0
-            cell.layer.borderColor = C.calendarBorder.color.cgColor
-        }else{
-            cell.backgroundColor = C.backPrimary.color
-            cell.layer.borderColor = C.calendarBorder.color.cgColor
-            cell.layer.borderWidth = 0.0
+        if indexPath.row == days.count {
+            guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "othercell", for: indexPath) as? OtherDateCollectionViewCell
+            else { return UICollectionViewCell() }
+            cell.setCell()
+            if (indexPath.row == selectedDay){
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.top)
+                cell.backgroundColor = C.calendarBackground.color
+                cell.layer.borderWidth = 2.0
+                cell.layer.borderColor = C.calendarBorder.color.cgColor
+            }else{
+                cell.backgroundColor = C.backPrimary.color
+                cell.layer.borderColor = C.calendarBorder.color.cgColor
+                cell.layer.borderWidth = 0.0
+            }
+            return cell
+        } else {
+            guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "calendarcell", for: indexPath) as? CalendarDayCollectionViewCell
+            else { return UICollectionViewCell() }
+            cell.setCell(
+                day: "\(DateFormatterManager.shared.getDay(dateString: days[indexPath.row])!)",
+                month: DateFormatterManager.shared.getMonth(dateString: days[indexPath.row])!
+            )
+            if (indexPath.row == selectedDay){
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.top)
+                cell.backgroundColor = C.calendarBackground.color
+                cell.layer.borderWidth = 2.0
+                cell.layer.borderColor = C.calendarBorder.color.cgColor
+            }else{
+                cell.backgroundColor = C.backPrimary.color
+                cell.layer.borderColor = C.calendarBorder.color.cgColor
+                cell.layer.borderWidth = 0.0
+            }
+            return cell
         }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -144,7 +189,7 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.backgroundColor = C.calendarBackground.color
         cell.layer.borderWidth = 2.0
         cell.layer.borderColor = C.calendarBorder.color.cgColor
-        select = indexPath.row
+        selectedDay = indexPath.row
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -165,11 +210,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        titles[section]
+        if section == sectionData.count - 1{
+            return "Другое"
+        } else {
+            return days[section]
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "tablecell", for: indexPath) as? UITableViewCell else { return UITableViewCell() }
         cell.textLabel?.text = sectionData[indexPath.section][indexPath.row]
         cell.selectionStyle = .none
         cell.backgroundColor = C.white.color

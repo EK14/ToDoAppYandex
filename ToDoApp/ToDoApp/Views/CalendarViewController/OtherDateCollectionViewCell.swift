@@ -13,11 +13,14 @@ class OtherDateCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Другое"
+        label.textColor = C.calendarBorder.color
         return label
     }()
     
     
     func setCell(){
+        layer.cornerRadius = 10
+        
         addSubview(otherLabel)
         
         NSLayoutConstraint.activate([
