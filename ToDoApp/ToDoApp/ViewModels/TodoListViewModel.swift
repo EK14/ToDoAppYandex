@@ -5,7 +5,7 @@ import Combine
 
 class TodoListViewModel: ObservableObject {
     @Published var items = [ToDoItem]()
-    var fileCache = FileCache(fileName: "todoappcache")
+    var fileCache = FileCache.shared
     
     init() {
         uploadItems()
@@ -47,6 +47,5 @@ class TodoListViewModel: ObservableObject {
         fileCache.addTask(item)
         fileCache.save()
         uploadItems()
-        print(items)
     }
 }

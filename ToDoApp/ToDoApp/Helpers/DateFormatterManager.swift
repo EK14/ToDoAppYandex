@@ -18,4 +18,18 @@ class DateFormatterManager {
         dateFormatter.dateFormat = "d MMMM yyyy"
         return dateFormatter
     }
+    
+    func getDay() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "d"
+        return dateFormatter
+    }
+    
+    func getMonth() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter
+    }
 }

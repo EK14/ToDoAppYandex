@@ -7,9 +7,12 @@ class FileCache {
     private var appFolderPath: URL = URL(filePath: "")
     private let manager = FileManager.default
     private var fileName: String
+    var saveAction: (() -> ())?
     
-    init(fileName: String) {
-        self.fileName = fileName
+    static let shared = FileCache()
+    
+    private init() {
+        self.fileName = "todoappcache"
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         self.appFolderPath = url.appendingPathComponent("todoappyandex")
         print(appFolderPath)
@@ -39,6 +42,7 @@ class FileCache {
         } catch {
             print(error.localizedDescription)
         }
+        saveAction?()
     }
 
     func upload() {
@@ -48,9 +52,5 @@ class FileCache {
                 todoItems = loadedItems.compactMap { ToDoItem.parse(json: $0) }
             }
         }
-    }
-    
-    func changeFilename(fileName: String) {
-        self.fileName = fileName
     }
 }

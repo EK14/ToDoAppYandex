@@ -17,7 +17,10 @@ class CalendarViewController: UIViewController {
         tableView.backgroundColor = C.backPrimary.color
         return tableView
     }()
-    private let dayOfWeek = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    private let fileCache = FileCache.shared
+    private var days = [Date]()
+    private var items = [ToDoItem]()
+
     private let shortDayOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
     private var select = 0
     private var sectionData = [["Купить сыр", "Сделать пиццу", "Задание"],
@@ -28,6 +31,11 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fileCache.saveAction = { [weak self] in
+            guard let self else { return }
+            setupCollectionViewData()
+            self.tableView.reloadData()
+        }
         setupCollectionViews()
         setupTableView()
     }
@@ -72,6 +80,19 @@ class CalendarViewController: UIViewController {
         ])
 
         calendarDaycollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        setupCollectionViewData()
+    }
+    
+    private func setupCollectionViewData() {
+        fileCache.upload()
+        items = fileCache.todoItems
+        for item in items {
+            guard let date = item.deadline, !days.contains(date) else { continue }
+            days.append(date)
+        }
+        days = days.sorted()
+        calendarDaycollectionView.reloadData()
     }
     
     private func setupTableView() {
@@ -88,17 +109,19 @@ class CalendarViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
 }
 
 extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dayOfWeek.count
+        days.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CalendarDayCollectionViewCell else { return UICollectionViewCell() }
-        cell.setCell(day: "30", month: "июня")
+        cell.setCell(
+            day: DateFormatterManager.shared.getDay().string(from: days[indexPath.row]),
+            month: DateFormatterManager.shared.getMonth().string(from: days[indexPath.row])
+        )
         if (indexPath.row == select){
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.top)
             cell.backgroundColor = C.calendarBackground.color
@@ -106,6 +129,8 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             cell.layer.borderColor = C.calendarBorder.color.cgColor
         }else{
             cell.backgroundColor = C.backPrimary.color
+            cell.layer.borderColor = C.calendarBorder.color.cgColor
+            cell.layer.borderWidth = 0.0
         }
         return cell
     }
@@ -151,4 +176,3 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
-

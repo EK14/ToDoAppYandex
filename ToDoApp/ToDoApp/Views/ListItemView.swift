@@ -65,7 +65,6 @@ struct ListItemView: View {
                             .foregroundStyle(item.isDone ? C.labelTertiary.swiftUIColor:  C.labelPrimary.swiftUIColor)
                             .strikethrough(item.isDone)
                             .lineLimit(3)
-                            .padding(.vertical, 20)
                     }
                     
                     if let deadline = item.deadline {
@@ -78,6 +77,7 @@ struct ListItemView: View {
                                 .foregroundStyle(C.labelTertiary.swiftUIColor)
                         }
                 }
+                .padding(.vertical, 20)
             }
             
             Spacer()
