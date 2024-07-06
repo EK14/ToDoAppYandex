@@ -5,6 +5,8 @@ import Combine
 
 class TodoListViewModel: ObservableObject {
     @Published var items = [ToDoItem]()
+    @Published var editItem = false
+    @Published var itemToEdit: ToDoItem?
     var fileCache = FileCache.shared
     
     init() {
@@ -39,6 +41,23 @@ class TodoListViewModel: ObservableObject {
             importance: item.importance,
             deadline: item.deadline,
             isDone: !item.isDone, 
+            createdAt: item.createdAt,
+            changedAt: item.changedAt,
+            color: item.color
+        )
+        fileCache.removeTask(item.id)
+        fileCache.addTask(item)
+        fileCache.save()
+        uploadItems()
+    }
+    
+    func updateItem(_ item: ToDoItem) {
+        let item = ToDoItem(
+            id: item.id,
+            text: item.text,
+            importance: item.importance,
+            deadline: item.deadline,
+            isDone: item.isDone,
             createdAt: item.createdAt,
             changedAt: item.changedAt,
             color: item.color

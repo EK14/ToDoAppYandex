@@ -51,9 +51,12 @@ struct MainView: View {
                     
                 }
                 .ignoresSafeArea(edges: .bottom)
-                .sheet(isPresented: $createItem, content: {
+                .sheet(isPresented: $createItem) {
                     CreateEditItemView(viewModel: CreateItemViewViewModel(todoListViewModel: viewModel), actionType: .create)
-                })
+                }
+                .sheet(isPresented: $viewModel.editItem) {
+                    CreateEditItemView(viewModel: CreateItemViewViewModel(todoItem: viewModel.itemToEdit, todoListViewModel: viewModel), actionType: .edit)
+                }
                 .navigationTitle("Мои дела")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {

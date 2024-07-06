@@ -47,6 +47,7 @@ class CalendarViewController: UIViewController {
     }
     
     private func setInitialCalendarDay() {
+        guard viewModel.days.count > 0 else { return }
         let firstCellIndexPath = IndexPath(item: 0, section: 0)
         calendarDaycollectionView.selectItem(at: firstCellIndexPath, animated: false, scrollPosition: .left)
         collectionView(calendarDaycollectionView, didSelectItemAt: firstCellIndexPath)
@@ -222,14 +223,25 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tablecell", for: indexPath) as UITableViewCell
         cell.selectionStyle = .none
         cell.backgroundColor = C.white.color
+        cell.textLabel?.textColor = C.labelPrimary.color
         cell.textLabel?.attributedText = NSAttributedString(string: viewModel.sectionData[indexPath.section][indexPath.row].text)
         if viewModel.sectionData[indexPath.section][indexPath.row].isDone {
             let attributedString = NSAttributedString(string: cell.textLabel?.text ?? "", attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
             cell.textLabel?.attributedText = attributedString
+            cell.textLabel?.textColor = C.labelTertiary.color
         }
+
+        // Создаем раскрашенный кружок
+        let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        circleView.layer.cornerRadius = 10
+        circleView.backgroundColor = UIColor(hex: viewModel.sectionData[indexPath.section][indexPath.row].categoryColor ?? "")
+
+        // Добавляем кружок в правый край ячейки
+        cell.accessoryView = circleView
+
         return cell
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView === self.tableView {
             if let topSectionIndex = self.tableView.indexPathsForVisibleRows?.map({ $0.section }).sorted().first,

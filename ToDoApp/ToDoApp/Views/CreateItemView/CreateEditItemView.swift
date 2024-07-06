@@ -4,7 +4,6 @@ import SwiftUI
 
 struct CreateEditItemView: View {
     @ObservedObject var viewModel: CreateItemViewViewModel
-//    @ObservedObject var mainViewViewModel: TodoListViewModel
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.presentationMode) var presentationMode
     var actionType: ItemActionType
@@ -24,13 +23,16 @@ struct CreateEditItemView: View {
                             SettingsView(importance: $viewModel.importance,
                                          isOn: $viewModel.isOn,
                                          date: $viewModel.deadline,
-                                         color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
+                                         color: $viewModel.color, 
+                                         datePickerIsHidden: $viewModel.datePickerIsHidden,
+                                         category: $viewModel.category,
+                                         categoryColor: $viewModel.categoryColor)
 
                             DeleteButton(actionType: actionType)
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel, actionType: actionType))
             } else {
                 ZStack {
                     Color(C.backPrimary.color)
@@ -43,7 +45,10 @@ struct CreateEditItemView: View {
                                 SettingsView(importance: $viewModel.importance,
                                              isOn: $viewModel.isOn,
                                              date: $viewModel.deadline,
-                                             color: $viewModel.color, datePickerIsHidden: $viewModel.datePickerIsHidden)
+                                             color: $viewModel.color,
+                                             datePickerIsHidden: $viewModel.datePickerIsHidden,
+                                             category: $viewModel.category,
+                                             categoryColor: $viewModel.categoryColor)
                                 .padding(.top, 16)
                             }
                             
@@ -51,7 +56,7 @@ struct CreateEditItemView: View {
                         }
                     }
                 }
-                .modifier(NavigationToolBarModifier(viewModel: viewModel))
+                .modifier(NavigationToolBarModifier(viewModel: viewModel, actionType: actionType))
             }
         }
     }
@@ -63,7 +68,12 @@ struct SettingsView: View {
     @Binding var date: Date?
     @Binding var color: Color
     @Binding var datePickerIsHidden: Bool
+    @Binding var category: String
+    @Binding var categoryColor: Color
     @State private var showColorPicker = false
+    
+//    @State private var selectedCategory = ItemCategory.other.rawValue
+    @State var showCategoryPicker = false
 
     var body: some View {
         VStack(spacing: .zero) {
@@ -80,7 +90,30 @@ struct SettingsView: View {
 
                 DatePickerView(date: $date, datePickerIsHidden: $datePickerIsHidden)
             }
+            
+            Divider()
+                .padding(.horizontal, Constants.dividerHorizontalPadding)
+            
+            HStack {
+                Text("Категория")
+                
+                Spacer()
+                
+                Button {
+                    showCategoryPicker.toggle()
+                } label: {
+                    HStack {
+                        Text(category)
+                        Image(systemName: "arrow.right")
+                    }
+                }
 
+            }
+            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.vertical, Constants.verticalPadding)
+            .background(C.backSecondary.swiftUIColor)
+            .padding(.horizontal, Constants.horizontalPadding)
+            
             Divider()
                 .padding(.horizontal, Constants.dividerHorizontalPadding)
 
@@ -108,8 +141,11 @@ struct SettingsView: View {
             .padding(.horizontal, Constants.horizontalPadding)
 
         }
-        .sheet(isPresented: $showColorPicker, content: {
+        .sheet(isPresented: $showColorPicker) {
             ColorPickerView(color: $color)
-        })
+        }
+        .sheet(isPresented: $showCategoryPicker) {
+            PickItemCategoryView(selectedCategory: $category, categoryColor: $categoryColor)
+        }
     }
 }

@@ -11,6 +11,8 @@ class CreateItemViewViewModel: ObservableObject {
     @Published var text: String
     @Published var importance: ItemImportance
     @Published var deadline: Date?
+    @Published var category = ItemCategory.other.rawValue
+    @Published var categoryColor = Color.clear
     
     var todoListViewModel: TodoListViewModel
     
@@ -21,7 +23,9 @@ class CreateItemViewViewModel: ObservableObject {
         self.importance = todoItem?.importance ?? .basic
         self.deadline = todoItem?.deadline ?? nil
         self.datePickerIsHidden = true
-        self.color = Color(UIColor(hex: todoItem?.color ?? "F0171") ?? .blue)
+        self.color = Color(UIColor(hex: todoItem?.color ?? "F0171") ?? .red)
+        self.category = todoItem?.category ?? ItemCategory.other.rawValue
+        self.categoryColor = Color(UIColor(hex: todoItem?.categoryColor ?? "FFFFFF") ?? .clear)
     }
     
     func save() {
@@ -30,7 +34,9 @@ class CreateItemViewViewModel: ObservableObject {
             importance: importance,
             deadline: deadline, 
             isDone: todoItem?.isDone ?? false,
-            color: color.toHexString(includeAlpha: false)
+            color: color.toHexString(includeAlpha: false),
+            category: category,
+            categoryColor: categoryColor.toHexString(includeAlpha: false)
         )
         todoListViewModel.saveItem(updatedItem)
     }
@@ -38,5 +44,19 @@ class CreateItemViewViewModel: ObservableObject {
     func delete() {
         guard let todoItem = self.todoItem else { return }
         todoListViewModel.removeTask(todoItem.id)
+    }
+    
+    func update() {
+        let updatedItem = ToDoItem(
+            id: todoItem?.id,
+            text: text,
+            importance: importance,
+            deadline: deadline,
+            isDone: todoItem?.isDone ?? false,
+            color: color.toHexString(includeAlpha: false),
+            category: category,
+            categoryColor: categoryColor.toHexString(includeAlpha: false)
+        )
+        todoListViewModel.updateItem(updatedItem)
     }
 }

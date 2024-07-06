@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C312EBED2C391E17008932F2 /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312EBEC2C391E17008932F2 /* ItemCategory.swift */; };
+		C312EBEF2C3927A8008932F2 /* PickItemCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312EBEE2C3927A8008932F2 /* PickItemCategoryView.swift */; };
 		C359B0BA2C38962400422F7A /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C359B0B92C38962400422F7A /* Collections */; };
 		C359B0BC2C38F7C300422F7A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */; };
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
@@ -66,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C312EBEC2C391E17008932F2 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
+		C312EBEE2C3927A8008932F2 /* PickItemCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickItemCategoryView.swift; sourceTree = "<group>"; };
 		C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 			children = (
 				C3C572E62C1DC13500314F5E /* ItemImportance.swift */,
 				C3EBBC662C2F45B000C09F51 /* ItemActionType.swift */,
+				C312EBEC2C391E17008932F2 /* ItemCategory.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				C3EBBC682C2F507D00C09F51 /* DeleteButton.swift */,
 				C3EBBC6A2C2F513700C09F51 /* DatePickerView.swift */,
 				C3EBBC6C2C2F51EE00C09F51 /* NavigationToolBarModifier.swift */,
+				C312EBEE2C3927A8008932F2 /* PickItemCategoryView.swift */,
 			);
 			path = CreateItemView;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */,
 				C3E300192C2B67D5009C76E6 /* Strings.swift in Sources */,
 				C3EBBC612C2F3D0700C09F51 /* ColorPickerView.swift in Sources */,
+				C312EBED2C391E17008932F2 /* ItemCategory.swift in Sources */,
 				C3E300422C2D11BE009C76E6 /* Color+Hex.swift in Sources */,
 				C38D29EB2C270648009C60BF /* MainView.swift in Sources */,
 				C3E3002A2C2C1A6B009C76E6 /* DateFormatterManager.swift in Sources */,
@@ -435,6 +442,7 @@
 				C359B0BC2C38F7C300422F7A /* CalendarViewModel.swift in Sources */,
 				C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */,
 				C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */,
+				C312EBEF2C3927A8008932F2 /* PickItemCategoryView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,
 				C3E300252C2B82E9009C76E6 /* View+Extension.swift in Sources */,
 				C3EBBC862C3225B400C09F51 /* CalendarViewController.swift in Sources */,

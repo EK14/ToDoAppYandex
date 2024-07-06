@@ -83,7 +83,8 @@ struct ListItemView: View {
             Spacer()
 
             Button{
-                
+                viewModel.editItem.toggle()
+                viewModel.itemToEdit = item
             } label: {
                 Image(systemName: "arrow.right")
                     .foregroundStyle(C.labelTertiary.swiftUIColor)

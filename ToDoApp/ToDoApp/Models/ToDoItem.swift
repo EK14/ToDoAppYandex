@@ -11,6 +11,8 @@ struct ToDoItem {
     let createdAt: Date
     let changedAt: Date?
     let color: String?
+    let category: String?
+    let categoryColor: String?
     
     init(id: String? = UUID().uuidString,
          text: String,
@@ -19,7 +21,9 @@ struct ToDoItem {
          isDone: Bool,
          createdAt: Date = Date.now,
          changedAt: Date? = nil,
-         color: String? = nil) {
+         color: String? = nil,
+         category: String? = nil,
+         categoryColor: String? = nil) {
         self.id = id ?? UUID().uuidString
         self.text = text
         self.importance = importance
@@ -28,6 +32,8 @@ struct ToDoItem {
         self.createdAt = createdAt
         self.changedAt = changedAt
         self.color = color
+        self.category = category
+        self.categoryColor = categoryColor
     }
 }
 
@@ -55,6 +61,10 @@ extension ToDoItem {
         jsonDict["isDone"] = isDone
         
         jsonDict["color"] = color
+        
+        jsonDict["category"] = category
+        
+        jsonDict["categoryColor"] = categoryColor
         
         return jsonDict
     }
@@ -103,7 +113,20 @@ extension ToDoItem {
         
         let color = jsonDict["color"] as? String
         
-        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, isDone: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) }, color: color)
+        let categoryColor = jsonDict["categoryColor"] as? String
+        
+        let category = jsonDict["category"] as? String ?? "other"
+        
+        return ToDoItem(id: id,
+                        text: text,
+                        importance: importance,
+                        deadline: deadline.map { Date(timeIntervalSince1970: $0)},
+                        isDone: done,
+                        createdAt: Date(timeIntervalSince1970: createdAt),
+                        changedAt: changedAt.map { Date(timeIntervalSince1970: $0) },
+                        color: color,
+                        category: category,
+                        categoryColor: categoryColor)
     }
 }
 
