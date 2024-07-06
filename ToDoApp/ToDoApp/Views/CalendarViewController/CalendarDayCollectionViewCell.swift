@@ -49,4 +49,18 @@ class CalendarDayCollectionViewCell: UICollectionViewCell {
             verticalStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                backgroundColor = C.calendarBackground.color
+                layer.borderWidth = 2.0
+                layer.borderColor = C.calendarBorder.color.cgColor
+            } else {
+                backgroundColor = C.backPrimary.color
+                layer.borderColor = C.calendarBorder.color.cgColor
+                layer.borderWidth = 0.0
+            }
+        }
+    }
 }

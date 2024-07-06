@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C359B0BA2C38962400422F7A /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C359B0B92C38962400422F7A /* Collections */; };
+		C359B0BC2C38F7C300422F7A /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */; };
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
 		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
 		C396B3C92C2A085400A695E6 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */,
 				C3E300212C2B723F009C76E6 /* CreateItemViewViewModel.swift */,
+				C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				C3EBBC692C2F507D00C09F51 /* DeleteButton.swift in Sources */,
 				C3EBBC8D2C322E2D00C09F51 /* CalendarDayCollectionViewCell.swift in Sources */,
 				C3EBBC5F2C2F3BC700C09F51 /* TextView.swift in Sources */,
+				C359B0BC2C38F7C300422F7A /* CalendarViewModel.swift in Sources */,
 				C3EBBC672C2F45B000C09F51 /* ItemActionType.swift in Sources */,
 				C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */,
 				C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */,

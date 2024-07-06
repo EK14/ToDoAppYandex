@@ -25,7 +25,6 @@ class DateFormatterManager {
         formatter.dateFormat = "d MMMM yyyy"
         if let date = formatter.date(from: dateString) {
             let day = Calendar.current.component(.day, from: date)
-            print(day)
             return day
         }
         return nil

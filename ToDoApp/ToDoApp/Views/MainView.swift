@@ -57,7 +57,9 @@ struct MainView: View {
                 .navigationTitle("Мои дела")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: CalendarViewControllerRepresentable().navigationBarTitle("Мои дела").navigationBarTitleDisplayMode(.inline).ignoresSafeArea()) {
+                        NavigationLink(destination: CalendarViewControllerRepresentable {
+                            viewModel.uploadItems()
+                        }.navigationBarTitle("Мои дела").navigationBarTitleDisplayMode(.inline).ignoresSafeArea()) {
                             Image(systemName: "calendar")
                         }
                     }
