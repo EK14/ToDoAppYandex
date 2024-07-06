@@ -4,13 +4,15 @@ import Foundation
 
 struct ToDoItem {
     let id: String
-    var text: String
-    var importance: ItemImportance
-    var deadline: Date?
-    var isDone: Bool
+    let text: String
+    let importance: ItemImportance
+    let deadline: Date?
+    let isDone: Bool
     let createdAt: Date
     let changedAt: Date?
-    var color: String?
+    let color: String?
+    let category: String?
+    let categoryColor: String?
     
     init(id: String? = UUID().uuidString,
          text: String,
@@ -19,7 +21,9 @@ struct ToDoItem {
          isDone: Bool,
          createdAt: Date = Date.now,
          changedAt: Date? = nil,
-         color: String? = nil) {
+         color: String? = nil,
+         category: String? = nil,
+         categoryColor: String? = nil) {
         self.id = id ?? UUID().uuidString
         self.text = text
         self.importance = importance
@@ -28,6 +32,8 @@ struct ToDoItem {
         self.createdAt = createdAt
         self.changedAt = changedAt
         self.color = color
+        self.category = category
+        self.categoryColor = categoryColor
     }
 }
 
@@ -54,6 +60,12 @@ extension ToDoItem {
 
         jsonDict["isDone"] = isDone
         
+        jsonDict["color"] = color
+        
+        jsonDict["category"] = category
+        
+        jsonDict["categoryColor"] = categoryColor
+        
         return jsonDict
     }
     
@@ -69,7 +81,7 @@ extension ToDoItem {
                 print(error.localizedDescription)
             }
         } else if let json = json as? [String: Any] {
-            print(Date(timeIntervalSince1970: 6.7))
+            
             guard let data = try? JSONSerialization.data(withJSONObject: json) else {
                 return nil
             }
@@ -89,18 +101,32 @@ extension ToDoItem {
         
         guard let text = jsonDict["text"] as? String,
               let createdAt = jsonDict["created_at"] as? TimeInterval,
-              let importanceString = jsonDict["importance"] as? String,
-              let importance = ItemImportance(rawValue: importanceString) else {
+              let importance = ItemImportance(rawValue: jsonDict["importance"] as? String ?? "basic") else {
             return nil
         }
         
         let deadline = jsonDict["deadline"] as? TimeInterval
         
-        let done = jsonDict["done"] as? Bool ?? false
+        let done = jsonDict["isDone"] as? Bool ?? false
         
         let changedAt = jsonDict["changed_at"] as? TimeInterval
         
-        return ToDoItem(id: id, text: text, importance: importance, deadline: deadline.map { Date(timeIntervalSince1970: $0) }, isDone: done, createdAt: Date(timeIntervalSince1970: createdAt), changedAt: changedAt.map { Date(timeIntervalSince1970: $0) })
+        let color = jsonDict["color"] as? String
+        
+        let categoryColor = jsonDict["categoryColor"] as? String
+        
+        let category = jsonDict["category"] as? String ?? "other"
+        
+        return ToDoItem(id: id,
+                        text: text,
+                        importance: importance,
+                        deadline: deadline.map { Date(timeIntervalSince1970: $0)},
+                        isDone: done,
+                        createdAt: Date(timeIntervalSince1970: createdAt),
+                        changedAt: changedAt.map { Date(timeIntervalSince1970: $0) },
+                        color: color,
+                        category: category,
+                        categoryColor: categoryColor)
     }
 }
 

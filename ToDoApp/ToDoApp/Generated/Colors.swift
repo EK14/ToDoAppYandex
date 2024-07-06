@@ -28,6 +28,8 @@ internal enum C {
   internal static let backPrimary = ColorAsset(name: "BackPrimary")
   internal static let backSecondary = ColorAsset(name: "BackSecondary")
   internal static let blue = ColorAsset(name: "Blue")
+  internal static let calendarBackground = ColorAsset(name: "CalendarBackground")
+  internal static let calendarBorder = ColorAsset(name: "CalendarBorder")
   internal static let gray = ColorAsset(name: "Gray")
   internal static let grayLight = ColorAsset(name: "GrayLight")
   internal static let green = ColorAsset(name: "Green")

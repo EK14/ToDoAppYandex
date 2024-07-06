@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ListItemView: View {
     @Binding var item: ToDoItem
-    var deleteAction: (String) -> ()
+    @ObservedObject var viewModel: TodoListViewModel
     
     var body: some View {
         HStack {
             HStack {
                 Button {
                     withAnimation {
-                        item.isDone.toggle()
+                        viewModel.doneButtonToggle(item)
                     }
                 } label: {
                     if item.isDone {
@@ -77,22 +77,28 @@ struct ListItemView: View {
                                 .foregroundStyle(C.labelTertiary.swiftUIColor)
                         }
                 }
+                .padding(.vertical, 20)
             }
             
             Spacer()
 
             Button{
-                print("hello")
+                viewModel.editItem.toggle()
+                viewModel.itemToEdit = item
             } label: {
                 Image(systemName: "arrow.right")
                     .foregroundStyle(C.labelTertiary.swiftUIColor)
             }
             .buttonStyle(.borderless)
+            
+            Rectangle()
+                .fill(Color(uiColor: UIColor.init(hex: item.color ?? "") ?? .blue))
+                .frame(width: Constants.coloredRectangleWidth)
         }
         .swipeActions(edge: .leading) {
             Button {
                 withAnimation {
-                    item.isDone.toggle()
+                    viewModel.doneButtonToggle(item)
                 }
             } label: {
                 Circle()
@@ -107,7 +113,7 @@ struct ListItemView: View {
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button(role: .destructive) {
                 withAnimation {
-                    deleteAction(item.id)
+                    viewModel.removeTask(item.id)
                 }
             } label: {
                 Circle()
@@ -138,5 +144,6 @@ struct ListItemView: View {
 #Preview {
     @State var item = ToDoItem(text: "Купить что-то", importance: .basic, isDone: true)
     @State var count = 0
-    return ListItemView(item: $item, deleteAction: {_ in print("hello")})
+    @State var viewModel = TodoListViewModel()
+    return ListItemView(item: $item, viewModel: viewModel)
 }

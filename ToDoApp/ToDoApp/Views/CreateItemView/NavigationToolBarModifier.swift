@@ -10,7 +10,7 @@ import SwiftUI
 struct NavigationToolBarModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CreateItemViewViewModel
-    @ObservedObject var mainViewViewModel: MainViewViewModel
+    var actionType: ItemActionType
     
     func body(content: Content) -> some View {
         content
@@ -19,13 +19,17 @@ struct NavigationToolBarModifier: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        viewModel.save()
-                        mainViewViewModel.items.append(viewModel.item)
+                        switch actionType {
+                        case .edit:
+                            viewModel.update()
+                        case .create:
+                            viewModel.save()
+                        }
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text(T.save)
                     }
-                    .disabled(viewModel.item.text.isEmpty ? true: false)
+                    .disabled(viewModel.text.isEmpty)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button{
