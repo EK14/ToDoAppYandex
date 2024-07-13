@@ -7,6 +7,7 @@
 
 import Foundation
 import CocoaLumberjackSwift
+import FileCache
 
 class CalendarViewModel: ObservableObject {
     var fileCache = FileCache.shared

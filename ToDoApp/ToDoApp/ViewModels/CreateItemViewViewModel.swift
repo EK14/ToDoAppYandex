@@ -2,6 +2,7 @@
 
 import SwiftUI
 import CocoaLumberjackSwift
+import FileCache
 
 class CreateItemViewViewModel: ObservableObject {
     @Published var height: CGFloat = Constants.textViewDefaultHeight

@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "filecache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EK14/FileCache.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8e8883ac4ba3ea8d4fa12ee0c671ece5b85e5b9b"
+      }
+    },
+    {
       "identity" : "swift-collections",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections.git",

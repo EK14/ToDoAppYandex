@@ -8,6 +8,7 @@
 import SwiftUI
 import Collections
 import CocoaLumberjackSwift
+import FileCache
 
 class CalendarViewController: UIViewController {
     private var calendarDaycollectionView: UICollectionView! = nil

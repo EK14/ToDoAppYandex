@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FileCache
 
 struct ImportanceSegmentView: View {
     @Binding var importance: ItemImportance
