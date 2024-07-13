@@ -11,14 +11,14 @@ struct NavigationToolBarModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CreateItemViewViewModel
     var actionType: ItemActionType
-    
+
     func body(content: Content) -> some View {
         content
             .navigationTitle(T.item)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button{
+                    Button {
                         switch actionType {
                         case .edit:
                             viewModel.update()
@@ -32,7 +32,7 @@ struct NavigationToolBarModifier: ViewModifier {
                     .disabled(viewModel.text.isEmpty)
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Button{
+                    Button {
                         presentationMode.wrappedValue.dismiss()
                         viewModel.delete()
                     } label: {

@@ -16,7 +16,10 @@ struct CustomTextView: UIViewRepresentable {
         textView.isUserInteractionEnabled = true
         textView.delegate = context.coordinator
         textView.textContainerInset = Constants.textViewTextContainerInset
-        textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        textView.selectedTextRange = textView.textRange(
+            from: textView.beginningOfDocument,
+            to: textView.beginningOfDocument
+        )
         textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textView.heightAnchor.constraint(equalToConstant: height).isActive = true
         textView.textContainer.lineFragmentPadding = .zero
@@ -60,7 +63,10 @@ class TextViewCoordinator: NSObject, UITextViewDelegate {
 
     func textViewDidChangeSelection(_ textView: UITextView) {
         if textView.textColor == UIColor.tertiaryLabel {
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            textView.selectedTextRange = textView.textRange(
+                from: textView.beginningOfDocument,
+                to: textView.beginningOfDocument
+            )
         }
     }
 }

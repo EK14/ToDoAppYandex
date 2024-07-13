@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CalendarViewControllerRepresentable: UIViewControllerRepresentable {
-    
-    var viewWillDissapear: () -> ()
+struct CalendarViewControllerRep: UIViewControllerRepresentable {
+
+    var viewWillDissapear: () -> Void
 
     func makeUIViewController(context: Context) -> CalendarViewController {
         let calendarViewController = CalendarViewController()

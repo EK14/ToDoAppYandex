@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct ColorPickerView: View {
-    
+
     let radius: CGFloat = 150
     var diameter: CGFloat {
         radius * 2
     }
-    
-    @State private var startLocation: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-    @State private var location: CGPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+
+    @State private var startLocation: CGPoint = CGPoint(
+        x: UIScreen.main.bounds.width / 2,
+        y: UIScreen.main.bounds.height / 2
+    )
+    @State private var location: CGPoint = CGPoint(
+        x: UIScreen.main.bounds.width / 2,
+        y: UIScreen.main.bounds.height / 2
+    )
     @Binding var color: Color
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -49,15 +55,15 @@ struct ColorPickerView: View {
                 )
                 .position(startLocation)
                 .shadow(color: Color.black.opacity(0.1), radius: 6, y: 8)
-            
+
             Circle()
                 .frame(width: 50, height: 50)
                 .position(location)
                 .foregroundColor(.black)
-            
+
             VStack {
                 Spacer()
-                
+
                 Button {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
@@ -89,16 +95,16 @@ struct ColorPickerView: View {
         .background(color)
         .gesture(dragGesture)
     }
-    
+
     var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0)
             .onChanged { val in
                 let distanceX = val.location.x - startLocation.x
                 let distanceY = val.location.y - startLocation.y
-                
+
                 let dir = CGPoint(x: distanceX, y: distanceY)
                 var distance = sqrt(distanceX * distanceX + distanceY * distanceY)
-                
+
                 if distance < radius {
                     location = val.location
                 } else {
@@ -108,21 +114,21 @@ struct ColorPickerView: View {
                                        y: startLocation.y + clampedY)
                     distance = radius
                 }
-                
+
                 if distance == 0 { return }
-                
+
                 var angle = Angle(radians: -Double(atan(dir.y / dir.x)))
-                
+
                 if dir.x < 0 {
                     angle.degrees += 180
                 } else if dir.x > 0 && dir.y > 0 {
                     angle.degrees += 360
                 }
-                
+
                 let hue = angle.degrees / 360
                 let saturation = Double(distance / radius)
                 color = Color(hue: hue, saturation: saturation, brightness: 0.7)
-                
+
             }
     }
 }

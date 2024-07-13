@@ -6,7 +6,7 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
-    
+
     func textEditorBackground<V>(@ViewBuilder _ content: () -> V) -> some View where V: View {
         onAppear {
             UITextView.appearance().backgroundColor = .clear

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ImportanceSegmentView: View {
     @Binding var importance: ItemImportance
-    
+
     var body: some View {
         HStack {
             Text(T.importance)
-            
+
             Spacer()
-            
+
             Picker("", selection: $importance) {
                 Image(systemName: T.arrowDown)
                     .tag(ItemImportance.low)

@@ -16,7 +16,7 @@ extension URLSession {
             result = (data, response, error)
             group.leave()
         }
-        
+
         defer {
             task.cancel()
         }
@@ -36,4 +36,3 @@ extension URLSession {
         return (data, response)
     }
 }
-

@@ -10,19 +10,19 @@ import CocoaLumberjackSwift
 
 class CalendarViewModel: ObservableObject {
     var fileCache = FileCache.shared
-    
+
     var items = [ToDoItem]()
-    
+
     var days = [String]()
 
     var sectionData = [[ToDoItem]]()
-    
+
     func uploadItems() {
         fileCache.upload()
         items = fileCache.todoItems
         DDLogInfo("Tasks uploaded")
     }
-    
+
     func doneButtonToggle(_ item: ToDoItem, isDone: Bool) {
         let item = ToDoItem(
             id: item.id,

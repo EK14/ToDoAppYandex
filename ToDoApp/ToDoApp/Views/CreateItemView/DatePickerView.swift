@@ -11,7 +11,6 @@ struct DatePickerView: View {
     @Binding var date: Date?
     @Binding var datePickerIsHidden: Bool
 
-
     var body: some View {
         DatePicker(
             "",
@@ -32,4 +31,3 @@ struct DatePickerView: View {
         .environment(\.locale, Locale.init(identifier: "ru"))
     }
 }
-

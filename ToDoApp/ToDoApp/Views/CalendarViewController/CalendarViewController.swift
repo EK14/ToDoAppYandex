@@ -11,18 +11,18 @@ import CocoaLumberjackSwift
 
 class CalendarViewController: UIViewController {
     private var calendarDaycollectionView: UICollectionView! = nil
-    
+
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = C.backPrimary.color
         return tableView
     }()
-    
-    var viewWillDissapear: (() -> ())?
-    
+
+    var viewWillDissapear: (() -> Void)?
+
     @ObservedObject var viewModel = CalendarViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         DDLogInfo("CalendarViewController viewDidLoad")
@@ -36,19 +36,19 @@ class CalendarViewController: UIViewController {
         setupCollectionViews()
         setupTableView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DDLogInfo("CalendarViewController viewWillAppear")
         setInitialCalendarDay()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         DDLogInfo("CalendarViewController viewWillDisappear")
         viewWillDissapear?()
     }
-    
+
     private func setInitialCalendarDay() {
         guard !viewModel.days.isEmpty else { return }
         let firstCellIndexPath = IndexPath(item: 0, section: 0)
@@ -56,7 +56,7 @@ class CalendarViewController: UIViewController {
         collectionView(calendarDaycollectionView, didSelectItemAt: firstCellIndexPath)
     }
 
-    private func setupCollectionViews(){
+    private func setupCollectionViews() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 10
@@ -66,7 +66,10 @@ class CalendarViewController: UIViewController {
         calendarDaycollectionView.delegate = self
         calendarDaycollectionView.showsHorizontalScrollIndicator = false
         calendarDaycollectionView.translatesAutoresizingMaskIntoConstraints = false
-        calendarDaycollectionView.register(CalendarDayCollectionViewCell.self, forCellWithReuseIdentifier: "calendarcell")
+        calendarDaycollectionView.register(
+            CalendarDayCollectionViewCell.self,
+            forCellWithReuseIdentifier: "calendarcell"
+        )
         calendarDaycollectionView.register(OtherDateCollectionViewCell.self, forCellWithReuseIdentifier: "othercell")
         calendarDaycollectionView.allowsMultipleSelection = false
         calendarDaycollectionView.backgroundColor = C.backPrimary.color
@@ -80,50 +83,58 @@ class CalendarViewController: UIViewController {
         view.addSubview(calendarDaycollectionView)
         calendarDaycollectionView.addSubview(innerView)
 
-        NSLayoutConstraint.activate([
-            calendarDaycollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            calendarDaycollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            calendarDaycollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            calendarDaycollectionView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 60) / 5 + 20),
-
-            innerView.topAnchor.constraint(equalTo: calendarDaycollectionView.topAnchor),
-            innerView.leadingAnchor.constraint(equalTo: calendarDaycollectionView.leadingAnchor, constant: 10),
-            innerView.trailingAnchor.constraint(equalTo: calendarDaycollectionView.trailingAnchor, constant: -10),
-            innerView.bottomAnchor.constraint(equalTo: calendarDaycollectionView.bottomAnchor),
-        ])
+        NSLayoutConstraint.activate(
+            [
+                calendarDaycollectionView.topAnchor.constraint(
+                    equalTo: view.safeAreaLayoutGuide.topAnchor,
+                    constant: 10
+                ),
+                calendarDaycollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                calendarDaycollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                calendarDaycollectionView.heightAnchor.constraint(
+                    equalToConstant: (UIScreen.main.bounds.width - 60) / 5 + 20
+                ),
+                innerView.topAnchor.constraint(equalTo: calendarDaycollectionView.topAnchor),
+                innerView.leadingAnchor.constraint(equalTo: calendarDaycollectionView.leadingAnchor, constant: 10),
+                innerView.trailingAnchor.constraint(equalTo: calendarDaycollectionView.trailingAnchor, constant: -10),
+                innerView.bottomAnchor.constraint(equalTo: calendarDaycollectionView.bottomAnchor)
+            ]
+        )
 
         calendarDaycollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
+
         setupCollectionViewData()
     }
-    
+
     private func setupCollectionViewData() {
         viewModel.fileCache.upload()
         viewModel.items = viewModel.fileCache.todoItems
-        
+
         DDLogInfo("CalendarViewController setupCollectionViewData")
-        
-        let sortedItems = viewModel.items.sorted { $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture }
-        
+
+        let sortedItems = viewModel.items.sorted {
+            $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture
+        }
+
         viewModel.days = []
-        
+
         for item in sortedItems {
             guard let date = item.deadline else { continue }
             let dateString = DateFormatterManager.shared.dateFormatter().string(from: date)
             guard !viewModel.days.contains(dateString) else { continue }
             viewModel.days.append(dateString)
         }
-        
+
         calendarDaycollectionView.reloadData()
     }
-    
+
     private func setupTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "tablecell")
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         view.addSubview(tableView)
-        
+
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: calendarDaycollectionView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -132,9 +143,11 @@ class CalendarViewController: UIViewController {
         ])
         setupTableViewData()
     }
-    
+
     private func setupTableViewData() {
-        let sortedItems = viewModel.items.sorted { $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture }
+        let sortedItems = viewModel.items.sorted {
+            $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture
+        }
 
         var dateDictionary = OrderedDictionary<String, [ToDoItem]>()
 
@@ -172,15 +185,24 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             return viewModel.days.count + 1
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         if indexPath.row == viewModel.days.count {
-            guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "othercell", for: indexPath) as? OtherDateCollectionViewCell
+            guard let cell = calendarDaycollectionView.dequeueReusableCell(
+                withReuseIdentifier: "othercell",
+                for: indexPath
+            ) as? OtherDateCollectionViewCell
             else { return UICollectionViewCell() }
             cell.setCell()
             return cell
         } else {
-            guard let cell = calendarDaycollectionView.dequeueReusableCell(withReuseIdentifier: "calendarcell", for: indexPath) as? CalendarDayCollectionViewCell
+            guard let cell = calendarDaycollectionView.dequeueReusableCell(
+                withReuseIdentifier: "calendarcell",
+                for: indexPath
+            ) as? CalendarDayCollectionViewCell
             else { return UICollectionViewCell() }
             cell.setCell(
                 day: "\(DateFormatterManager.shared.getDay(dateString: viewModel.days[indexPath.row])!)",
@@ -189,14 +211,25 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
             return cell
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         return CGSize(width: (UIScreen.main.bounds.width - 60) / 5, height: (UIScreen.main.bounds.width - 60) / 5)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        self.calendarDaycollectionView.selectItem(at: IndexPath(row: indexPath.row, section: 0), animated: true, scrollPosition: .left)
+        guard collectionView.cellForItem(at: indexPath) != nil else { return }
+        self.calendarDaycollectionView.selectItem(
+            at: IndexPath(
+                row: indexPath.row,
+                section: 0
+            ),
+            animated: true,
+            scrollPosition: .left
+        )
         tableView.scrollToRow(at: IndexPath(row: 0, section: indexPath.row), at: .top, animated: true)
         DDLogInfo("CalendarViewController collectionView didSelectItemAt indexPath: \(indexPath)")
     }
@@ -219,7 +252,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == viewModel.sectionData.count - 1{
+        if section == viewModel.sectionData.count - 1 {
             return "Другое"
         } else {
             return viewModel.days[section]
@@ -231,9 +264,14 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         cell.backgroundColor = C.white.color
         cell.textLabel?.textColor = C.labelPrimary.color
-        cell.textLabel?.attributedText = NSAttributedString(string: viewModel.sectionData[indexPath.section][indexPath.row].text)
+        cell.textLabel?.attributedText = NSAttributedString(
+            string: viewModel.sectionData[indexPath.section][indexPath.row].text
+        )
         if viewModel.sectionData[indexPath.section][indexPath.row].isDone {
-            let attributedString = NSAttributedString(string: cell.textLabel?.text ?? "", attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue])
+            let attributedString = NSAttributedString(
+                string: cell.textLabel?.text ?? "",
+                attributes: [NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+            )
             cell.textLabel?.attributedText = attributedString
             cell.textLabel?.textColor = C.labelTertiary.color
         }
@@ -241,12 +279,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         // Создаем раскрашенный кружок
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         circleView.layer.cornerRadius = 10
-        circleView.backgroundColor = UIColor(hex: viewModel.sectionData[indexPath.section][indexPath.row].categoryColor ?? "")
+        circleView.backgroundColor = UIColor(
+            hex: viewModel.sectionData[indexPath.section][indexPath.row].categoryColor ?? ""
+        )
 
         // Добавляем кружок в правый край ячейки
         cell.accessoryView = circleView
 
-        DDLogInfo("CalendarViewController tableView cellForRowAt indexPath: \(indexPath), text: \(cell.textLabel?.text ?? "")")
+        DDLogInfo(
+            "CalendarViewController tableView cellForRowAt indexPath: \(indexPath), text: \(cell.textLabel?.text ?? "")"
+        )
         return cell
     }
 
@@ -260,8 +302,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-    
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+    func tableView(
+        _ tableView: UITableView,
+        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
         let move = doneButtonToggleContextualAction(isDone: true, indexPath: indexPath)
         move.backgroundColor = C.green.color
         move.image = UIImage(systemName: "checkmark.circle.fill")
@@ -270,8 +315,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         DDLogInfo("CalendarViewController tableView leadingSwipeActionsConfigurationForRowAt indexPath: \(indexPath)")
         return configuration
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
         let undo = doneButtonToggleContextualAction(isDone: false, indexPath: indexPath)
         undo.backgroundColor = C.red.color
         undo.image = UIImage(systemName: "arrow.uturn.left.circle.fill")
@@ -280,21 +328,29 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         DDLogInfo("CalendarViewController tableView trailingSwipeActionsConfigurationForRowAt indexPath: \(indexPath)")
         return configuration
     }
-    
+
     private func doneButtonToggleContextualAction(isDone: Bool, indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
+        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, completionHandler) in
             guard let self else { return }
             viewModel.doneButtonToggle(viewModel.sectionData[indexPath.section][indexPath.row], isDone: isDone)
-            DDLogInfo("CalendarViewController doneButtonToggleContextualAction isDone: \(isDone), indexPath: \(indexPath)")
+            DDLogInfo(
+                "CalendarViewController doneButtonToggleContextualAction isDone: \(isDone), indexPath: \(indexPath)"
+            )
             guard let cell = tableView.cellForRow(at: indexPath) else { completionHandler(false); return }
-            
             // Animation
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.1,
+                           animations: {
                 cell.transform = cell.transform.scaledBy(x: 1.5, y: 1.5)
-            }, completion: { (success) in
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            }, completion: { (_) in
+                UIView.animate(withDuration: 0.3,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 0.5,
+                               options: .curveEaseOut,
+                               animations: {
                     cell.transform = CGAffineTransform.identity
-                }, completion: nil)
+                },
+                               completion: nil)
             })
 
             completionHandler(true)

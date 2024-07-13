@@ -28,13 +28,12 @@ struct PickItemCategoryView: View {
     @State private var showColorAlert = false
     @State private var showCategoryAlert = false
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
         ZStack {
             Color(C.backPrimary.swiftUIColor)
                 .ignoresSafeArea()
-            
-            
+
             List {
                 ForEach(Array(categories.enumerated()), id: \.1) { index, item in
                     Button {
@@ -44,9 +43,9 @@ struct PickItemCategoryView: View {
                     } label: {
                         HStack {
                             Text(item)
-                            
+
                             Spacer()
-                            
+
                             HStack {
                                 if selectedCategory == item {
                                     Image(systemName: "checkmark")
@@ -58,12 +57,12 @@ struct PickItemCategoryView: View {
                         }
                     }
                 }
-                
+
                 HStack {
                     TextField(text: $newCategory) {
                         Text("Новая категория")
                     }
-                    
+
                     Button {
                         showColorPicker.toggle()
                     } label: {
@@ -75,7 +74,7 @@ struct PickItemCategoryView: View {
                     Circle()
                         .fill(categoryColor)
                         .frame(width: 10, height: 10)
-                    
+
                     Button {
                         if newCategory.isEmpty {
                             showCategoryAlert.toggle()
@@ -84,7 +83,7 @@ struct PickItemCategoryView: View {
                         } else if !newCategory.isEmpty {
                             categories.append(newCategory)
                             colors.append(categoryColor)
-                        } 
+                        }
                     } label: {
                         Text("Добавить")
                     }
@@ -107,5 +106,3 @@ struct PickItemCategoryView: View {
         }
     }
 }
-
-

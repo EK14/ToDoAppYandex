@@ -7,10 +7,10 @@ class FileCache {
     private var appFolderPath: URL = URL(filePath: "")
     private let manager = FileManager.default
     private var fileName: String
-    var saveAction: (() -> ())?
-    
+    var saveAction: (() -> Void)?
+
     static let shared = FileCache()
-    
+
     private init() {
         self.fileName = "todoappcache"
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

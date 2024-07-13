@@ -18,7 +18,7 @@ class DateFormatterManager {
         dateFormatter.dateFormat = "d MMMM yyyy"
         return dateFormatter
     }
-    
+
     func getDay(dateString: String) -> Int? {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -29,7 +29,7 @@ class DateFormatterManager {
         }
         return nil
     }
-    
+
     func getMonth(dateString: String) -> String? {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
