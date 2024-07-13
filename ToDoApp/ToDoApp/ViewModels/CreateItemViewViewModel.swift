@@ -1,6 +1,7 @@
 //  Created by Elina Karapetian on 26.06.2024.
 
 import SwiftUI
+import CocoaLumberjackSwift
 
 class CreateItemViewViewModel: ObservableObject {
     @Published var height: CGFloat = Constants.textViewDefaultHeight
@@ -39,11 +40,13 @@ class CreateItemViewViewModel: ObservableObject {
             categoryColor: categoryColor.toHexString(includeAlpha: false)
         )
         todoListViewModel.saveItem(updatedItem)
+        DDLogInfo("Task with ID \(updatedItem.id) saved")
     }
     
     func delete() {
         guard let todoItem = self.todoItem else { return }
         todoListViewModel.removeTask(todoItem.id)
+        DDLogInfo("Task with ID \(todoItem.id) deleted")
     }
     
     func update() {
@@ -58,5 +61,6 @@ class CreateItemViewViewModel: ObservableObject {
             categoryColor: categoryColor.toHexString(includeAlpha: false)
         )
         todoListViewModel.updateItem(updatedItem)
+        DDLogInfo("Task with ID \(updatedItem.id) updated")
     }
 }

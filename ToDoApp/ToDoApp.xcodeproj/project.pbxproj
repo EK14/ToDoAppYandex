@@ -18,6 +18,7 @@
 		C38D29E82C263FE6009C60BF /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29E72C263FE6009C60BF /* FileCacheTests.swift */; };
 		C38D29EB2C270648009C60BF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38D29EA2C270648009C60BF /* MainView.swift */; };
 		C396B3C92C2A085400A695E6 /* TodoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */; };
+		C3BB4B932C428E5200A6BB06 /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BB4B922C428E5200A6BB06 /* URLSession+Extensions.swift */; };
 		C3C572D82C1DC0D100314F5E /* ToDoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */; };
 		C3C572DA2C1DC0D100314F5E /* CreateEditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C572D92C1DC0D100314F5E /* CreateEditItemView.swift */; };
 		C3C572DC2C1DC0D300314F5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3C572DB2C1DC0D300314F5E /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C396B3C82C2A085400A695E6 /* TodoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewModel.swift; sourceTree = "<group>"; };
+		C3BB4B922C428E5200A6BB06 /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
 		C3C572D42C1DC0D100314F5E /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppApp.swift; sourceTree = "<group>"; };
 		C3C572D92C1DC0D100314F5E /* CreateEditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditItemView.swift; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 				7A18FB082CB5ADB2A2483A72 /* Pods-ToDoAppTests.debug.xcconfig */,
 				8A28E9DD2BCB70A22922F784 /* Pods-ToDoAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -203,6 +204,30 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		C3BB4B8F2C428E0200A6BB06 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C3BB4B902C428E1D00A6BB06 /* FileCache */ = {
+			isa = PBXGroup;
+			children = (
+				C3C572FE2C1F13A600314F5E /* FileCache.swift */,
+			);
+			path = FileCache;
+			sourceTree = "<group>";
+		};
+		C3BB4B912C428E3400A6BB06 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C3BB4B922C428E5200A6BB06 /* URLSession+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C3C572CB2C1DC0D100314F5E = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +251,9 @@
 		C3C572D62C1DC0D100314F5E /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				C3BB4B912C428E3400A6BB06 /* Extensions */,
+				C3BB4B902C428E1D00A6BB06 /* FileCache */,
+				C3BB4B8F2C428E0200A6BB06 /* App */,
 				C3E300172C2B67C6009C76E6 /* Generated */,
 				C3E300142C2B66BC009C76E6 /* Resources */,
 				C396B3CA2C2A0FBB00A695E6 /* Helpers */,
@@ -233,8 +261,6 @@
 				C38D29E92C2705F1009C60BF /* Views */,
 				C3C572EA2C1DC25F00314F5E /* Models */,
 				C3C572E52C1DC11900314F5E /* Enums */,
-				C3C572D72C1DC0D100314F5E /* ToDoAppApp.swift */,
-				C3C572FE2C1F13A600314F5E /* FileCache.swift */,
 				C3C572DD2C1DC0D300314F5E /* Preview Content */,
 			);
 			path = ToDoApp;
@@ -336,6 +362,7 @@
 				C3C572D12C1DC0D100314F5E /* Frameworks */,
 				C3C572D22C1DC0D100314F5E /* Resources */,
 				C3E300132C2B6593009C76E6 /* ShellScript */,
+				C3BB4B972C42B36B00A6BB06 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -479,6 +506,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C3BB4B972C42B36B00A6BB06 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
 		C3E300132C2B6593009C76E6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,6 +552,7 @@
 				C3EBBC6B2C2F513700C09F51 /* DatePickerView.swift in Sources */,
 				C3EBBC8F2C323BAD00C09F51 /* OtherDateCollectionViewCell.swift in Sources */,
 				C3C572E72C1DC13500314F5E /* ItemImportance.swift in Sources */,
+				C3BB4B932C428E5200A6BB06 /* URLSession+Extensions.swift in Sources */,
 				C3EBBC732C2FE01B00C09F51 /* NewItemCell.swift in Sources */,
 				C3EBBC892C32263500C09F51 /* CalendarViewControllerRepresentable.swift in Sources */,
 				C3E3001F2C2B711B009C76E6 /* Constants.swift in Sources */,

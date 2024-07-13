@@ -2,6 +2,7 @@
 
 import SwiftUI
 import Combine
+import CocoaLumberjackSwift
 
 class TodoListViewModel: ObservableObject {
     @Published var items = [ToDoItem]()
@@ -21,17 +22,20 @@ class TodoListViewModel: ObservableObject {
         items.removeAll(where: { $0.id == taskID })
         fileCache.removeTask(taskID)
         fileCache.save()
+        DDLogInfo("Task with ID \(taskID) removed")
     }
     
     func saveItem(_ item: ToDoItem) {
         items.append(item)
         fileCache.addTask(item)
         fileCache.save()
+        DDLogInfo("Task with ID \(item.id) saved")
     }
     
     func uploadItems() {
         fileCache.upload()
         items = fileCache.todoItems
+        DDLogInfo("Tasks uploaded")
     }
     
     func doneButtonToggle(_ item: ToDoItem) {
@@ -49,6 +53,7 @@ class TodoListViewModel: ObservableObject {
         fileCache.addTask(item)
         fileCache.save()
         uploadItems()
+        DDLogInfo("Task with ID \(item.id) toggled done status")
     }
     
     func updateItem(_ item: ToDoItem) {
@@ -66,5 +71,6 @@ class TodoListViewModel: ObservableObject {
         fileCache.addTask(item)
         fileCache.save()
         uploadItems()
+        DDLogInfo("Task with ID \(item.id) updated")
     }
 }

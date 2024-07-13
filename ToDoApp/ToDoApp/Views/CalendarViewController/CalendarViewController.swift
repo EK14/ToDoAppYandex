@@ -7,9 +7,9 @@
 
 import SwiftUI
 import Collections
+import CocoaLumberjackSwift
 
 class CalendarViewController: UIViewController {
-    
     private var calendarDaycollectionView: UICollectionView! = nil
     
     private let tableView: UITableView = {
@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DDLogInfo("CalendarViewController viewDidLoad")
         view.backgroundColor = C.backPrimary.color
         viewModel.fileCache.saveAction = { [weak self] in
             guard let self else { return }
@@ -38,16 +39,18 @@ class CalendarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        DDLogInfo("CalendarViewController viewWillAppear")
         setInitialCalendarDay()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        DDLogInfo("CalendarViewController viewWillDisappear")
         viewWillDissapear?()
     }
     
     private func setInitialCalendarDay() {
-        guard viewModel.days.count > 0 else { return }
+        guard !viewModel.days.isEmpty else { return }
         let firstCellIndexPath = IndexPath(item: 0, section: 0)
         calendarDaycollectionView.selectItem(at: firstCellIndexPath, animated: false, scrollPosition: .left)
         collectionView(calendarDaycollectionView, didSelectItemAt: firstCellIndexPath)
@@ -97,6 +100,8 @@ class CalendarViewController: UIViewController {
     private func setupCollectionViewData() {
         viewModel.fileCache.upload()
         viewModel.items = viewModel.fileCache.todoItems
+        
+        DDLogInfo("CalendarViewController setupCollectionViewData")
         
         let sortedItems = viewModel.items.sorted { $0.deadline ?? Date.distantFuture < $1.deadline ?? Date.distantFuture }
         
@@ -155,12 +160,13 @@ class CalendarViewController: UIViewController {
         viewModel.sectionData = Array(dateDictionary.values)
 
         tableView.reloadData()
+        DDLogInfo("CalendarViewController setupTableViewData")
     }
 }
 
 extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if viewModel.sectionData.count == 0 {
+        if viewModel.sectionData.isEmpty {
             return 0
         } else {
             return viewModel.days.count + 1
@@ -192,6 +198,7 @@ extension CalendarViewController: UICollectionViewDataSource, UICollectionViewDe
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         self.calendarDaycollectionView.selectItem(at: IndexPath(row: indexPath.row, section: 0), animated: true, scrollPosition: .left)
         tableView.scrollToRow(at: IndexPath(row: 0, section: indexPath.row), at: .top, animated: true)
+        DDLogInfo("CalendarViewController collectionView didSelectItemAt indexPath: \(indexPath)")
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -239,6 +246,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         // Добавляем кружок в правый край ячейки
         cell.accessoryView = circleView
 
+        DDLogInfo("CalendarViewController tableView cellForRowAt indexPath: \(indexPath), text: \(cell.textLabel?.text ?? "")")
         return cell
     }
 
@@ -259,6 +267,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         move.image = UIImage(systemName: "checkmark.circle.fill")
 
         let configuration = UISwipeActionsConfiguration(actions: [move])
+        DDLogInfo("CalendarViewController tableView leadingSwipeActionsConfigurationForRowAt indexPath: \(indexPath)")
         return configuration
     }
     
@@ -268,6 +277,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         undo.image = UIImage(systemName: "arrow.uturn.left.circle.fill")
 
         let configuration = UISwipeActionsConfiguration(actions: [undo])
+        DDLogInfo("CalendarViewController tableView trailingSwipeActionsConfigurationForRowAt indexPath: \(indexPath)")
         return configuration
     }
     
@@ -275,7 +285,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
             guard let self else { return }
             viewModel.doneButtonToggle(viewModel.sectionData[indexPath.section][indexPath.row], isDone: isDone)
-            
+            DDLogInfo("CalendarViewController doneButtonToggleContextualAction isDone: \(isDone), indexPath: \(indexPath)")
             guard let cell = tableView.cellForRow(at: indexPath) else { completionHandler(false); return }
             
             // Animation
