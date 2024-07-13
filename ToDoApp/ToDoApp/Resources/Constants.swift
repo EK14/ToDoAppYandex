@@ -8,7 +8,7 @@ enum Constants {
     static let cornerRadius = 16.0
     static let verticalPadding = 10.0
     static let dividerHorizontalPadding = horizontalPadding * 2
-    
+
     static let textViewDefaultHeight = 120.0
     static let topPadding = 16.0
     static let textViewTextContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeleteButton: View {
     var actionType: ItemActionType
-    
+
     var body: some View {
         Button {
             // delete action

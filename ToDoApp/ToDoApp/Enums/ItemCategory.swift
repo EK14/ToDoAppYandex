@@ -12,7 +12,7 @@ enum ItemCategory: String {
     case study = "Учеба"
     case hobby = "Хобби"
     case other = "Не выбрано"
-    
+
     func getColor() -> Color {
         switch self {
         case .work:

@@ -6,21 +6,24 @@
 //
 
 import Foundation
+import CocoaLumberjackSwift
+import FileCache
 
 class CalendarViewModel: ObservableObject {
     var fileCache = FileCache.shared
-    
+
     var items = [ToDoItem]()
-    
+
     var days = [String]()
 
     var sectionData = [[ToDoItem]]()
-    
+
     func uploadItems() {
         fileCache.upload()
         items = fileCache.todoItems
+        DDLogInfo("Tasks uploaded")
     }
-    
+
     func doneButtonToggle(_ item: ToDoItem, isDone: Bool) {
         let item = ToDoItem(
             id: item.id,
@@ -36,5 +39,6 @@ class CalendarViewModel: ObservableObject {
         fileCache.addTask(item)
         fileCache.save()
         uploadItems()
+        DDLogInfo("Task with ID \(item.id) toggled done status to \(isDone)")
     }
 }

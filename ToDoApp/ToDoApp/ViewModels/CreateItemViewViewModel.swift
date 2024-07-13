@@ -1,6 +1,8 @@
 //  Created by Elina Karapetian on 26.06.2024.
 
 import SwiftUI
+import CocoaLumberjackSwift
+import FileCache
 
 class CreateItemViewViewModel: ObservableObject {
     @Published var height: CGFloat = Constants.textViewDefaultHeight
@@ -13,9 +15,9 @@ class CreateItemViewViewModel: ObservableObject {
     @Published var deadline: Date?
     @Published var category = ItemCategory.other.rawValue
     @Published var categoryColor = Color.clear
-    
+
     var todoListViewModel: TodoListViewModel
-    
+
     init(todoItem: ToDoItem? = nil, todoListViewModel: TodoListViewModel) {
         self.todoItem = todoItem
         self.todoListViewModel = todoListViewModel
@@ -27,25 +29,27 @@ class CreateItemViewViewModel: ObservableObject {
         self.category = todoItem?.category ?? ItemCategory.other.rawValue
         self.categoryColor = Color(UIColor(hex: todoItem?.categoryColor ?? "FFFFFF") ?? .clear)
     }
-    
+
     func save() {
         let updatedItem = ToDoItem(
             text: text,
             importance: importance,
-            deadline: deadline, 
+            deadline: deadline,
             isDone: todoItem?.isDone ?? false,
             color: color.toHexString(includeAlpha: false),
             category: category,
             categoryColor: categoryColor.toHexString(includeAlpha: false)
         )
         todoListViewModel.saveItem(updatedItem)
+        DDLogInfo("Task with ID \(updatedItem.id) saved")
     }
-    
+
     func delete() {
         guard let todoItem = self.todoItem else { return }
         todoListViewModel.removeTask(todoItem.id)
+        DDLogInfo("Task with ID \(todoItem.id) deleted")
     }
-    
+
     func update() {
         let updatedItem = ToDoItem(
             id: todoItem?.id,
@@ -58,5 +62,6 @@ class CreateItemViewViewModel: ObservableObject {
             categoryColor: categoryColor.toHexString(includeAlpha: false)
         )
         todoListViewModel.updateItem(updatedItem)
+        DDLogInfo("Task with ID \(updatedItem.id) updated")
     }
 }

@@ -1,6 +1,7 @@
 //  Created by Elina Karapetian on 15.06.2024.
 
 import SwiftUI
+import FileCache
 
 struct CreateEditItemView: View {
     @ObservedObject var viewModel: CreateItemViewViewModel
@@ -14,7 +15,6 @@ struct CreateEditItemView: View {
                 ZStack {
                     Color(C.backPrimary.color)
                         .edgesIgnoringSafeArea(.all)
-                        
 
                     ScrollView {
                         VStack(spacing: Constants.verticalStackSpacing) {
@@ -23,7 +23,7 @@ struct CreateEditItemView: View {
                             SettingsView(importance: $viewModel.importance,
                                          isOn: $viewModel.isOn,
                                          date: $viewModel.deadline,
-                                         color: $viewModel.color, 
+                                         color: $viewModel.color,
                                          datePickerIsHidden: $viewModel.datePickerIsHidden,
                                          category: $viewModel.category,
                                          categoryColor: $viewModel.categoryColor)
@@ -51,7 +51,7 @@ struct CreateEditItemView: View {
                                              categoryColor: $viewModel.categoryColor)
                                 .padding(.top, 16)
                             }
-                            
+
                             DeleteButton(actionType: actionType)
                         }
                     }
@@ -71,7 +71,7 @@ struct SettingsView: View {
     @Binding var category: String
     @Binding var categoryColor: Color
     @State private var showColorPicker = false
-    
+
 //    @State private var selectedCategory = ItemCategory.other.rawValue
     @State var showCategoryPicker = false
 
@@ -90,15 +90,15 @@ struct SettingsView: View {
 
                 DatePickerView(date: $date, datePickerIsHidden: $datePickerIsHidden)
             }
-            
+
             Divider()
                 .padding(.horizontal, Constants.dividerHorizontalPadding)
-            
+
             HStack {
                 Text("Категория")
-                
+
                 Spacer()
-                
+
                 Button {
                     showCategoryPicker.toggle()
                 } label: {
@@ -113,21 +113,21 @@ struct SettingsView: View {
             .padding(.vertical, Constants.verticalPadding)
             .background(C.backSecondary.swiftUIColor)
             .padding(.horizontal, Constants.horizontalPadding)
-            
+
             Divider()
                 .padding(.horizontal, Constants.dividerHorizontalPadding)
 
             HStack {
                 VStack(alignment: .leading) {
                     Text("Цвет")
-                    
+
                     Text(color.toHexString()!)
                         .foregroundStyle(C.blue.swiftUIColor)
                         .font(.footnote)
                 }
-                
+
                 Spacer()
-                
+
                 Button {
                     showColorPicker.toggle()
                 } label: {

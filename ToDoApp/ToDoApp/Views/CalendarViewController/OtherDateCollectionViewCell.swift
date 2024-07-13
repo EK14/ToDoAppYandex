@@ -16,19 +16,18 @@ class OtherDateCollectionViewCell: UICollectionViewCell {
         label.textColor = C.calendarBorder.color
         return label
     }()
-    
-    
-    func setCell(){
+
+    func setCell() {
         layer.cornerRadius = 10
-        
+
         addSubview(otherLabel)
-        
+
         NSLayoutConstraint.activate([
             otherLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             otherLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
+
     override var isSelected: Bool {
         didSet {
             if self.isSelected {

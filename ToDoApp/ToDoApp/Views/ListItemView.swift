@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import FileCache
 
 struct ListItemView: View {
     @Binding var item: ToDoItem
     @ObservedObject var viewModel: TodoListViewModel
-    
+
     var body: some View {
         HStack {
             HStack {
@@ -37,8 +38,7 @@ struct ListItemView: View {
                                     .stroke(C.red.swiftUIColor, lineWidth: 1.5)
                                     .frame(width: 24, height: 24)
                             )
-                    }
-                    else {
+                    } else {
                         Circle()
                             .fill(.clear)
                             .frame(width: 24, height: 24)
@@ -50,7 +50,7 @@ struct ListItemView: View {
                     }
                 }
                 .buttonStyle(.borderless)
-                
+
                 VStack(alignment: .leading) {
                     HStack {
                         if item.importance == .important {
@@ -60,17 +60,17 @@ struct ListItemView: View {
                             Image(systemName: T.arrowDown)
                                 .foregroundStyle(C.gray.swiftUIColor)
                         }
-                        
+
                         Text(item.text)
                             .foregroundStyle(item.isDone ? C.labelTertiary.swiftUIColor:  C.labelPrimary.swiftUIColor)
                             .strikethrough(item.isDone)
                             .lineLimit(3)
                     }
-                    
+
                     if let deadline = item.deadline {
                         HStack(spacing: 2) {
                             Image(systemName: "calendar")
-                            
+
                             Text(DateFormatterManager.shared.dateFormatter().string(from: deadline))
                                 .font(.footnote)
                             }
@@ -79,10 +79,10 @@ struct ListItemView: View {
                 }
                 .padding(.vertical, 20)
             }
-            
+
             Spacer()
 
-            Button{
+            Button {
                 viewModel.editItem.toggle()
                 viewModel.itemToEdit = item
             } label: {
@@ -90,7 +90,7 @@ struct ListItemView: View {
                     .foregroundStyle(C.labelTertiary.swiftUIColor)
             }
             .buttonStyle(.borderless)
-            
+
             Rectangle()
                 .fill(Color(uiColor: UIColor.init(hex: item.color ?? "") ?? .blue))
                 .frame(width: Constants.coloredRectangleWidth)
@@ -127,7 +127,7 @@ struct ListItemView: View {
         }
         .swipeActions(edge: .trailing) {
             Button {
-                
+
             } label: {
                 Circle()
                     .fill(C.white.swiftUIColor)

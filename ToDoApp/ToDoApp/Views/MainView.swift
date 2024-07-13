@@ -6,22 +6,22 @@ struct MainView: View {
     @State var createItem = false
     @State var showAllItems = false
     @ObservedObject var viewModel = TodoListViewModel()
-    
+
     var body: some View {
         ZStack {
             NavigationStack {
                 ZStack {
                     Color(C.backPrimary.swiftUIColor)
                         .ignoresSafeArea()
-                    
+
                     List {
                         Section(header: HStack {
                             Text("Выполнено — \(viewModel.countDoneItems)")
                                 .foregroundStyle(C.labelTertiary.swiftUIColor)
-                            
+
                             Spacer()
-                            
-                            Button{
+
+                            Button {
                                 showAllItems.toggle()
                             } label: {
                                 Text(showAllItems ? "Скрыть": "Показать")
@@ -42,25 +42,34 @@ struct MainView: View {
                                         }
                                     }
                                 }
-                                
+
                                 NewItemCell(createItem: $createItem)
                             }
                     }
                     .scrollContentBackground(.hidden)
                     .foregroundStyle(C.backSecondary.swiftUIColor)
-                    
+
                 }
                 .ignoresSafeArea(edges: .bottom)
                 .sheet(isPresented: $createItem) {
-                    CreateEditItemView(viewModel: CreateItemViewViewModel(todoListViewModel: viewModel), actionType: .create)
+                    CreateEditItemView(
+                        viewModel: CreateItemViewViewModel(todoListViewModel: viewModel),
+                        actionType: .create
+                    )
                 }
                 .sheet(isPresented: $viewModel.editItem) {
-                    CreateEditItemView(viewModel: CreateItemViewViewModel(todoItem: viewModel.itemToEdit, todoListViewModel: viewModel), actionType: .edit)
+                    CreateEditItemView(
+                        viewModel: CreateItemViewViewModel(
+                            todoItem: viewModel.itemToEdit,
+                            todoListViewModel: viewModel
+                        ),
+                        actionType: .edit
+                    )
                 }
                 .navigationTitle("Мои дела")
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: CalendarViewControllerRepresentable {
+                        NavigationLink(destination: CalendarViewControllerRep {
                             viewModel.uploadItems()
                         }.navigationBarTitle("Мои дела").navigationBarTitleDisplayMode(.inline).ignoresSafeArea()) {
                             Image(systemName: "calendar")
@@ -68,10 +77,10 @@ struct MainView: View {
                     }
                 }
             }
-            
+
             VStack {
                 Spacer()
-                
+
                 Button {
                     createItem.toggle()
                 } label: {

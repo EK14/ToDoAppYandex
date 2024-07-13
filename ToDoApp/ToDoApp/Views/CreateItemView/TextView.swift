@@ -11,7 +11,7 @@ struct TextView: View {
     @Binding var text: String
     @Binding var height: CGFloat
     @Binding var color: Color
-    
+
     var body: some View {
         ZStack(alignment: .topLeading) {
             CustomTextView(text: $text, height: $height, placeholder: T.whatNeedToDo)
@@ -19,14 +19,14 @@ struct TextView: View {
                     ZStack(alignment: .trailing) {
                         Color.clear
                             .background(C.backSecondary.swiftUIColor)
-                        
+
                         Rectangle()
                             .fill(color)
                             .frame(width: Constants.coloredRectangleWidth)
                     }
                 }
                 .cornerRadius(Constants.cornerRadius)
-            
+
             if text.isEmpty {
                 Text(T.whatNeedToDo)
                     .frame(alignment: .leading)

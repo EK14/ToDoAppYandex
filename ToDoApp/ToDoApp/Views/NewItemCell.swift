@@ -9,13 +9,13 @@ import SwiftUI
 
 struct NewItemCell: View {
     @Binding var createItem: Bool
-    
+
     var body: some View {
         HStack {
             Circle()
                 .frame(width: 24, height: 24)
                 .opacity(0)
-            
+
             Text("Новое")
                 .foregroundStyle(C.labelTertiary.swiftUIColor)
         }
@@ -27,6 +27,6 @@ struct NewItemCell: View {
 
 #Preview {
     @State var createItem = false
-    
+
     return NewItemCell(createItem: $createItem)
 }
