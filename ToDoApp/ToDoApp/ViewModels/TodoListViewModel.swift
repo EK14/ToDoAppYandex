@@ -9,7 +9,7 @@ class TodoListViewModel: ObservableObject {
     @Published var items = [ToDoItem]()
     @Published var editItem = false
     @Published var itemToEdit: ToDoItem?
-    var fileCache = FileCache.shared
+//    var fileCache = FileCache.shared
 
     init() {
         uploadItems()
@@ -21,21 +21,22 @@ class TodoListViewModel: ObservableObject {
 
     func removeTask(_ taskID: String) {
         items.removeAll(where: { $0.id == taskID })
-        fileCache.removeTask(taskID)
-        fileCache.save()
+//        fileCache.removeTask(taskID)
+//        fileCache.save()
         DDLogInfo("Task with ID \(taskID) removed")
     }
 
     func saveItem(_ item: ToDoItem) {
         items.append(item)
-        fileCache.addTask(item)
-        fileCache.save()
+        addToDoItem(item)
+//        fileCache.addTask(item)
+//        fileCache.save()
         DDLogInfo("Task with ID \(item.id) saved")
     }
 
     func uploadItems() {
-        fileCache.upload()
-        items = fileCache.todoItems
+//        fileCache.upload()
+//        items = fileCache.todoItems
         DDLogInfo("Tasks uploaded")
     }
 
@@ -50,9 +51,9 @@ class TodoListViewModel: ObservableObject {
             changedAt: item.changedAt,
             color: item.color
         )
-        fileCache.removeTask(item.id)
-        fileCache.addTask(item)
-        fileCache.save()
+//        fileCache.removeTask(item.id)
+//        fileCache.addTask(item)
+//        fileCache.save()
         uploadItems()
         DDLogInfo("Task with ID \(item.id) toggled done status")
     }
@@ -68,10 +69,28 @@ class TodoListViewModel: ObservableObject {
             changedAt: item.changedAt,
             color: item.color
         )
-        fileCache.removeTask(item.id)
-        fileCache.addTask(item)
-        fileCache.save()
+//        fileCache.removeTask(item.id)
+//        fileCache.addTask(item)
+//        fileCache.save()
         uploadItems()
         DDLogInfo("Task with ID \(item.id) updated")
+    }
+
+    func fetchToDoItemList() {
+        Task {
+            DispatchQueue.main.async {
+                self.items = await DefaultNetworkingService.shared.getItemsList()
+            }
+        }
+    }
+    
+    func addToDoItem(_ item: ToDoItem) {
+        Task {
+            do {
+                let result: ToDoItem? = try await DefaultNetworkingService<Any>.request(Endpoints.addItem, item)
+            } catch {
+                print(error)
+            }
+        }
     }
 }

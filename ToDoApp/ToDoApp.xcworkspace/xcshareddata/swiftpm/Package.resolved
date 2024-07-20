@@ -1,4 +1,5 @@
 {
+  "originHash" : "6f7d3af026075db9cadebe7c68a095b729a9d0a7ab859a75deeb148d25de8419",
   "pins" : [
     {
       "identity" : "cocoalumberjack",
@@ -7,15 +8,6 @@
       "state" : {
         "revision" : "4b8714a7fb84d42393314ce897127b3939885ec3",
         "version" : "3.8.5"
-      }
-    },
-    {
-      "identity" : "filecache",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/EK14/FileCache.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "8e8883ac4ba3ea8d4fa12ee0c671ece5b85e5b9b"
       }
     },
     {
@@ -37,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
