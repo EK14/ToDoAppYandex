@@ -6,6 +6,7 @@ struct MainView: View {
     @State var createItem = false
     @State var showAllItems = false
     @ObservedObject var viewModel = TodoListViewModel()
+    private let networkingService = DefaultNetworkingService.shared
 
     var body: some View {
         ZStack {
@@ -95,6 +96,9 @@ struct MainView: View {
                         .padding(.bottom, 20)
                 }
             }
+        }
+        .onAppear {
+            viewModel.uploadItems()
         }
     }
 }
