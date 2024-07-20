@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		C3220F002C47EE6C00694391 /* Deserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EFF2C47EE6C00694391 /* Deserialization.swift */; };
 		C32BCF0C2C4B04DC0015745A /* ToDoItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCF0B2C4B04DC0015745A /* ToDoItem+Extension.swift */; };
 		C32BCF0E2C4BBCDF0015745A /* ToDoItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCF0D2C4BBCDF0015745A /* ToDoItemElement.swift */; };
+		C32BCF112C4BD6990015745A /* FileCache in Frameworks */ = {isa = PBXBuildFile; productRef = C32BCF102C4BD6990015745A /* FileCache */; };
 		C32F84512C3C40FA00D3CAAC /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84502C3C40FA00D3CAAC /* CocoaLumberjack */; };
 		C32F84532C3C40FA00D3CAAC /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84522C3C40FA00D3CAAC /* CocoaLumberjackSwift */; };
 		C32F84552C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84542C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend */; };
@@ -151,6 +152,7 @@
 				C32F84552C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				C32F84532C3C40FA00D3CAAC /* CocoaLumberjackSwift in Frameworks */,
 				59227BD0AA8FDE821C208EA9 /* Pods_ToDoApp.framework in Frameworks */,
+				C32BCF112C4BD6990015745A /* FileCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +407,7 @@
 				C32F84522C3C40FA00D3CAAC /* CocoaLumberjackSwift */,
 				C32F84542C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend */,
 				C3AE884F2C42C8B300176D92 /* FileCache */,
+				C32BCF102C4BD6990015745A /* FileCache */,
 			);
 			productName = ToDoApp;
 			productReference = C3C572D42C1DC0D100314F5E /* ToDoApp.app */;
@@ -460,7 +463,7 @@
 			packageReferences = (
 				C359B0B82C38962400422F7A /* XCRemoteSwiftPackageReference "swift-collections" */,
 				C32F844F2C3C40FA00D3CAAC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
-				C3220F012C47FA3900694391 /* XCLocalSwiftPackageReference "../../FileCache" */,
+				C32BCF0F2C4BD6990015745A /* XCRemoteSwiftPackageReference "FileCache" */,
 			);
 			productRefGroup = C3C572D52C1DC0D100314F5E /* Products */;
 			projectDirPath = "";
@@ -908,14 +911,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		C3220F012C47FA3900694391 /* XCLocalSwiftPackageReference "../../FileCache" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../FileCache;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		C32BCF0F2C4BD6990015745A /* XCRemoteSwiftPackageReference "FileCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EK14/FileCache.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		C32F844F2C3C40FA00D3CAAC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
@@ -935,6 +939,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C32BCF102C4BD6990015745A /* FileCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C32BCF0F2C4BD6990015745A /* XCRemoteSwiftPackageReference "FileCache" */;
+			productName = FileCache;
+		};
 		C32F84502C3C40FA00D3CAAC /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C32F844F2C3C40FA00D3CAAC /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
