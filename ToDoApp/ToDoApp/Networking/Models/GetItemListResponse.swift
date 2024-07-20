@@ -15,7 +15,7 @@ struct GetItemListResponse: NetworkingModels {
     let list: [ToDoItem]
     let revision: Int32?
     
-    public init(status: String, list: [ToDoItem], revision: Int32) {
+    public init(status: String = "ok", list: [ToDoItem], revision: Int32? = nil) {
         self.status = status
         self.list = list
         self.revision = revision
@@ -47,3 +47,23 @@ extension GetItemListResponse: Deserialization {
     }
 }
 
+extension GetItemListResponse: Serialization {
+    static func serialize(_ data: GetItemListResponse) -> Data? {
+        var jsonDict = [String: Any]()
+        
+        jsonDict["status"] = data.status
+        
+        jsonDict["element"] = data.list[0].json
+        
+        jsonDict["revision"] = nil
+        
+        print(jsonDict)
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [])
+            return jsonData
+        } catch {
+            print("Error encoding model: \(error)")
+        }
+        return nil
+    }
+}

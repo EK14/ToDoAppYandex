@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Serialization {
-    func serialize(_ data: Self) -> Data?
+    static func serialize(_ data: Self) -> Data?
 }

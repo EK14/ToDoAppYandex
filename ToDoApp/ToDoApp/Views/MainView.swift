@@ -6,7 +6,7 @@ struct MainView: View {
     @State var createItem = false
     @State var showAllItems = false
     @ObservedObject var viewModel = TodoListViewModel()
-    private let networkingService = DefaultNetworkingService<Any>()
+    private let networkingService = DefaultNetworkingService.shared
 
     var body: some View {
         ZStack {

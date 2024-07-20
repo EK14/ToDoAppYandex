@@ -78,19 +78,14 @@ class TodoListViewModel: ObservableObject {
 
     func fetchToDoItemList() {
         Task {
+            let result = await DefaultNetworkingService.shared.getItemsList()
             DispatchQueue.main.async {
-                self.items = await DefaultNetworkingService.shared.getItemsList()
+                self.items = result
             }
         }
     }
     
     func addToDoItem(_ item: ToDoItem) {
-        Task {
-            do {
-                let result: ToDoItem? = try await DefaultNetworkingService<Any>.request(Endpoints.addItem, item)
-            } catch {
-                print(error)
-            }
-        }
+        Task { await DefaultNetworkingService.shared.addToDoItem(item) }
     }
 }

@@ -15,10 +15,9 @@ extension ToDoItem: Deserialization {
 }
 
 extension ToDoItem: Serialization {
-    func serialize(_ data: ToDoItem) -> Data? {
+    static func serialize(_ data: ToDoItem) -> Data? {
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-            
+            let jsonData = try JSONSerialization.data(withJSONObject: data.json, options: [])
             return jsonData
         } catch {
             print("Error encoding model: \(error)")
