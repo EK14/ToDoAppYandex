@@ -24,12 +24,13 @@ public enum APIError: String, Error {
     case invalidAuth = "401"
     case elementNotFound = "404"
     case serverError = "500"
-    case emptyData = "204"
+    case emptyData = "122"
     case invalidResponse = "123"
+    case parseError = "124"
 }
 
 public class NCEndpoint<Response> {
-    let path: String
+    var path: String
     let method: HTTPMethodType
     let decode: (Data) throws -> Response?
 

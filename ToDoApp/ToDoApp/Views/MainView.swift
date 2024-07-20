@@ -98,7 +98,7 @@ struct MainView: View {
             }
         }
         .onAppear {
-            viewModel.fetchToDoItemList()
+            viewModel.uploadItems()
         }
     }
 }

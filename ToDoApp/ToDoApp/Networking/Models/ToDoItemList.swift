@@ -1,5 +1,5 @@
 //
-//  GetItemListResponse.swift
+//  ToDoItemList.swift
 //  ToDoApp
 //
 //  Created by Elina Karapetian on 17.07.2024.
@@ -10,7 +10,7 @@ import FileCache
 
 protocol NetworkingModels {}
 
-struct GetItemListResponse: NetworkingModels {
+struct ToDoItemList: NetworkingModels {
     let status: String
     let list: [ToDoItem]
     let revision: Int32?
@@ -22,8 +22,8 @@ struct GetItemListResponse: NetworkingModels {
     }
 }
 
-extension GetItemListResponse: Deserialization {
-    static func deserialize(from data: Data) -> GetItemListResponse? {
+extension ToDoItemList: Deserialization {
+    static func deserialize(from data: Data) -> ToDoItemList? {
         do {
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                let status = json["status"] as? String,
@@ -37,32 +37,11 @@ extension GetItemListResponse: Deserialization {
                     }
                 }
 
-                let response = GetItemListResponse(status: status, list: todoItems, revision: revision)
+                let response = ToDoItemList(status: status, list: todoItems, revision: revision)
                 return response
             }
         } catch {
             print(error)
-        }
-        return nil
-    }
-}
-
-extension GetItemListResponse: Serialization {
-    static func serialize(_ data: GetItemListResponse) -> Data? {
-        var jsonDict = [String: Any]()
-        
-        jsonDict["status"] = data.status
-        
-        jsonDict["element"] = data.list[0].json
-        
-        jsonDict["revision"] = nil
-        
-        print(jsonDict)
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [])
-            return jsonData
-        } catch {
-            print("Error encoding model: \(error)")
         }
         return nil
     }

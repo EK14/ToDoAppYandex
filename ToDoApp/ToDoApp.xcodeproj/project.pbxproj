@@ -14,11 +14,12 @@
 		C3220EF22C47E69B00694391 /*  DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EF12C47E69B00694391 /*  DefaultNetworkingService.swift */; };
 		C3220EF42C47E73500694391 /* NCEnpdoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EF32C47E73500694391 /* NCEnpdoint.swift */; };
 		C3220EF62C47E76700694391 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EF52C47E76700694391 /* Endpoints.swift */; };
-		C3220EF92C47E81400694391 /* GetItemListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EF82C47E81400694391 /* GetItemListResponse.swift */; };
+		C3220EF92C47E81400694391 /* ToDoItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EF82C47E81400694391 /* ToDoItemList.swift */; };
 		C3220EFB2C47E8D600694391 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EFA2C47E8D600694391 /* ToDoApp.swift */; };
 		C3220EFE2C47EE2500694391 /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EFD2C47EE2500694391 /* Serialization.swift */; };
 		C3220F002C47EE6C00694391 /* Deserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3220EFF2C47EE6C00694391 /* Deserialization.swift */; };
 		C32BCF0C2C4B04DC0015745A /* ToDoItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCF0B2C4B04DC0015745A /* ToDoItem+Extension.swift */; };
+		C32BCF0E2C4BBCDF0015745A /* ToDoItemElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCF0D2C4BBCDF0015745A /* ToDoItemElement.swift */; };
 		C32F84512C3C40FA00D3CAAC /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84502C3C40FA00D3CAAC /* CocoaLumberjack */; };
 		C32F84532C3C40FA00D3CAAC /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84522C3C40FA00D3CAAC /* CocoaLumberjackSwift */; };
 		C32F84552C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend in Frameworks */ = {isa = PBXBuildFile; productRef = C32F84542C3C40FA00D3CAAC /* CocoaLumberjackSwiftLogBackend */; };
@@ -91,12 +92,13 @@
 		C3220EF12C47E69B00694391 /*  DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DefaultNetworkingService.swift"; sourceTree = "<group>"; };
 		C3220EF32C47E73500694391 /* NCEnpdoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCEnpdoint.swift; sourceTree = "<group>"; };
 		C3220EF52C47E76700694391 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		C3220EF82C47E81400694391 /* GetItemListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItemListResponse.swift; sourceTree = "<group>"; };
+		C3220EF82C47E81400694391 /* ToDoItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemList.swift; sourceTree = "<group>"; };
 		C3220EFA2C47E8D600694391 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
 		C3220EFC2C47EB7400694391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C3220EFD2C47EE2500694391 /* Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
 		C3220EFF2C47EE6C00694391 /* Deserialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deserialization.swift; sourceTree = "<group>"; };
 		C32BCF0B2C4B04DC0015745A /* ToDoItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoItem+Extension.swift"; sourceTree = "<group>"; };
+		C32BCF0D2C4BBCDF0015745A /* ToDoItemElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemElement.swift; sourceTree = "<group>"; };
 		C359B0BB2C38F7C300422F7A /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C38D29E72C263FE6009C60BF /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		C38D29EA2C270648009C60BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -209,7 +211,8 @@
 		C3220EF72C47E7F400694391 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C3220EF82C47E81400694391 /* GetItemListResponse.swift */,
+				C3220EF82C47E81400694391 /* ToDoItemList.swift */,
+				C32BCF0D2C4BBCDF0015745A /* ToDoItemElement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -550,7 +553,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			shellScript = "$PODS_ROOT/SwiftLint/swiftlint\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
 		};
 		C3E300132C2B6593009C76E6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -594,6 +597,7 @@
 				C3220EF02C47DB3800694391 /* NetworkingService.swift in Sources */,
 				C3E3001D2C2B6E11009C76E6 /* Colors.swift in Sources */,
 				C3E300192C2B67D5009C76E6 /* Strings.swift in Sources */,
+				C32BCF0E2C4BBCDF0015745A /* ToDoItemElement.swift in Sources */,
 				C3EBBC612C2F3D0700C09F51 /* ColorPickerView.swift in Sources */,
 				C312EBED2C391E17008932F2 /* ItemCategory.swift in Sources */,
 				C3E300422C2D11BE009C76E6 /* Color+Hex.swift in Sources */,
@@ -602,7 +606,7 @@
 				C3E3002A2C2C1A6B009C76E6 /* DateFormatterManager.swift in Sources */,
 				C3E300122C2B45B3009C76E6 /* CustomTextView.swift in Sources */,
 				C3220F002C47EE6C00694391 /* Deserialization.swift in Sources */,
-				C3220EF92C47E81400694391 /* GetItemListResponse.swift in Sources */,
+				C3220EF92C47E81400694391 /* ToDoItemList.swift in Sources */,
 				C3E300452C2D11DA009C76E6 /* UIColor+Hex.swift in Sources */,
 				C396B3C92C2A085400A695E6 /* TodoListViewModel.swift in Sources */,
 				C3220EF62C47E76700694391 /* Endpoints.swift in Sources */,
